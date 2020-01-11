@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # @autor: Matheus Felipe
-# @github: githuc.com/matheusfelipeog
+# @github: github.com/matheusfelipeog
 
 # Builtins
 import tkinter as tk
@@ -230,7 +230,7 @@ class Calculadora(object):
 
     def __lenght_max(self, data_in_input):
         """Para verificar se o input atingiu a quantidade de caracteres máxima"""
-        if len(str(data_in_input)) > 15:
+        if len(str(data_in_input)) >= 15:
             return False
         return True
             

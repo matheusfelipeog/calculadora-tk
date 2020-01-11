@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # @autor: Matheus Felipe
-# @github: githuc.com/matheusfelipeog
+# @github: github.com/matheusfelipeog
 
 class Calculador(object):
     """Classe responsável por realizar todos os calculos da calculadora"""
