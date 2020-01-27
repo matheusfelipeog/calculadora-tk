@@ -31,21 +31,21 @@ class Calculadora(object):
     def __init__(self, master):
         self.master = master
         self.calc = Calculador()
-        self.style = style.Dark()
+        self.style = style.DefaultStyleForMacOS()
 
         # Edição da Top-Level
         self.master.title('Calculadora Tk')
         self.master.maxsize(width=335, height=355)
         self.master.minsize(width=335, height=355)
         self.master.geometry('-150+100')
-        self.master['bg'] = '#252729'
+        self.master['bg'] = self.style.master_bg
 
         # Área do input
-        self.__frame_input = tk.Frame(self.master, bg='#252729', pady=4)
+        self.__frame_input = tk.Frame(self.master, bg=self.style.frame_bg, pady=4)
         self.__frame_input.pack()
 
         # Área dos botões
-        self.__frame_buttons = tk.Frame(self.master, bg='#252729', padx=2)
+        self.__frame_buttons = tk.Frame(self.master, bg=self.style.frame_bg, padx=2)
         self.__frame_buttons.pack()
 
         # Funções de inicialização 
