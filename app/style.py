@@ -72,7 +72,6 @@ class DefaultStyleForMacOS(object):
         }
 
         self.BTN_DEFAULT = {
-            'activeforeground': 'light blue',
             'borderwidth': 0,
             'width': 7,
             'height': 3,
@@ -80,7 +79,6 @@ class DefaultStyleForMacOS(object):
         }
 
         self.BTN_NUMERICO = {
-            'activeforeground': 'light blue',
             'borderwidth': 0,
             'width': 7,
             'height': 3,
@@ -88,7 +86,6 @@ class DefaultStyleForMacOS(object):
         }
 
         self.BTN_OPERADOR = {
-            'activeforeground': 'light blue',
             'borderwidth': 0,
             'width': 7,
             'height': 3,
@@ -96,7 +93,6 @@ class DefaultStyleForMacOS(object):
         }
 
         self.BTN_CLEAR = {
-            'activeforeground': 'light blue',
             'borderwidth': 0,
             'width': 7,
             'height': 3,
