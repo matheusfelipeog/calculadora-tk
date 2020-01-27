@@ -147,6 +147,9 @@ class Calculadora(object):
         self.__BTN_SUB['command'] = partial(self.__set_operator_in_input, '-')
         self.__BTN_MULT['command'] = partial(self.__set_operator_in_input, '*')
         self.__BTN_DIV['command'] = partial(self.__set_operator_in_input, '/')
+        self.__BTN_EXP['command'] = partial(self.__set_operator_in_input, '**')
+        self.__BTN_RAIZ['command'] = partial(self.__set_operator_in_input, '**(1/2)')
+
 
         # Eventos dos botões de funcionalidades da calculadora
         self.__BTN_DOT['command'] = partial(self.__set_dot_in_input, '.')
