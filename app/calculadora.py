@@ -5,6 +5,7 @@
 
 # Builtins
 import tkinter as tk
+import platform
 from functools import partial
 
 # Módulos próprios
@@ -32,7 +33,12 @@ class Calculadora(object):
     def __init__(self, master):
         self.master = master
         self.calc = Calculador()
-        self.style = style.DefaultStyleForMacOS()
+
+        # Define estilo padrão para macOS, caso seja o sistema operacional utilizado
+        if platform.system() == 'Darwin':
+            self.style = style.DefaultStyleForMacOS()
+        else:
+            self.style = style.Dark()
 
         # Edição da Top-Level
         self.master.title('Calculadora Tk')
