@@ -2,6 +2,9 @@
 
 class Dark(object):
     def __init__(self):
+        self.master_bg = '#252729'
+        self.frame_bg = '#252729'
+
         self.INPUT = {
             'bg': '#252729',
             'fg': 'white',
@@ -54,3 +57,45 @@ class Dark(object):
             'height': 2,
             'font': 'Arial 14 bold'
         }
+
+class DefaultStyleForMacOS(object):
+    """Classe criada para ambientes macOS para corrigir bug de estilo."""
+    def __init__(self):
+        self.master_bg = ''
+        self.frame_bg = ''
+
+        self.INPUT = {
+            'borderwidth': 0,
+            'width': 15,
+            'font': 'Arial 28 bold',
+            'justify': 'right'
+        }
+
+        self.BTN_DEFAULT = {
+            'borderwidth': 0,
+            'width': 7,
+            'height': 3,
+            'font': 'Arial 14 bold'
+        }
+
+        self.BTN_NUMERICO = {
+            'borderwidth': 0,
+            'width': 7,
+            'height': 3,
+            'font': 'Arial 14 bold'
+        }
+
+        self.BTN_OPERADOR = {
+            'borderwidth': 0,
+            'width': 7,
+            'height': 3,
+            'font': 'Arial 14 bold'
+        }
+
+        self.BTN_CLEAR = {
+            'borderwidth': 0,
+            'width': 7,
+            'height': 3,
+            'font': 'Arial 14 bold'
+        }
+        
