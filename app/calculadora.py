@@ -24,6 +24,7 @@ class Calculadora(object):
         4 | 5 | 6 | -
         1 | 2 | 3 | +
         . | 0 | = | /
+          |   | ^ | √
 
         OBS: É necessário importar o modulo style contido na pacote view,
              e selecionar uma de suas classes de estilo.
@@ -41,8 +42,8 @@ class Calculadora(object):
 
         # Edição da Top-Level
         self.master.title('Calculadora Tk')
-        self.master.maxsize(width=335, height=355)
-        self.master.minsize(width=335, height=355)
+        self.master.maxsize(width=335, height=390)
+        self.master.minsize(width=335, height=390)
         self.master.geometry('-150+100')
         self.master['bg'] = self.style.master_bg
 
@@ -83,6 +84,8 @@ class Calculadora(object):
         self.__BTN_SUB = tk.Button(master, text='-', cnf=self.style.BTN_OPERADOR)
         self.__BTN_DIV = tk.Button(master, text='/', cnf=self.style.BTN_OPERADOR)
         self.__BTN_MULT = tk.Button(master, text='*', cnf=self.style.BTN_OPERADOR)
+        self.__BTN_EXP = tk.Button(master, text='^', cnf=self.style.BTN_OPERADOR)
+        self.__BTN_RAIZ = tk.Button(master, text='√', cnf=self.style.BTN_OPERADOR)
 
         # Instânciação dos botões de funcionalidades da calculadora
         self.__BTN_ABRE_PARENTESE = tk.Button(master, text='(', cnf=self.style.BTN_DEFAULT)
@@ -91,6 +94,10 @@ class Calculadora(object):
         self.__BTN_DEL = tk.Button(master, text='<', cnf=self.style.BTN_CLEAR)
         self.__BTN_RESULT = tk.Button(master, text='=', cnf=self.style.BTN_OPERADOR)
         self.__BTN_DOT = tk.Button(master, text='.', cnf=self.style.BTN_DEFAULT)
+
+        # Instânciação dos botões vazios, para futura implementação
+        self.__BTN_VAZIO1 = tk.Button(master, text='', cnf=self.style.BTN_OPERADOR)
+        self.__BTN_VAZIO2 = tk.Button(master, text='', cnf=self.style.BTN_OPERADOR)
 
         # Distribuição dos botões em um gerenciador de layout grid
         # Linha 0
@@ -123,6 +130,12 @@ class Calculadora(object):
         self.__BTN_RESULT.grid(row=4, column=2, padx=1, pady=1)
         self.__BTN_DIV.grid(row=4, column=3, padx=1, pady=1)
 
+        # Linha 5
+        self.__BTN_VAZIO1.grid(row=5, column=0, padx=1, pady=1)
+        self.__BTN_VAZIO2.grid(row=5, column=1, padx=1, pady=1)
+        self.__BTN_EXP.grid(row=5, column=2, padx=1, pady=1)
+        self.__BTN_RAIZ.grid(row=5, column=3, padx=1, pady=1)
+
         # Eventos dos botões númericos
         self.__BTN_NUM_0['command'] = partial(self.__set_values_in_input, 0)
         self.__BTN_NUM_1['command'] = partial(self.__set_values_in_input, 1)
@@ -140,6 +153,9 @@ class Calculadora(object):
         self.__BTN_SUB['command'] = partial(self.__set_operator_in_input, '-')
         self.__BTN_MULT['command'] = partial(self.__set_operator_in_input, '*')
         self.__BTN_DIV['command'] = partial(self.__set_operator_in_input, '/')
+        self.__BTN_EXP['command'] = partial(self.__set_operator_in_input, '**')
+        self.__BTN_RAIZ['command'] = partial(self.__set_operator_in_input, '**(1/2)')
+
 
         # Eventos dos botões de funcionalidades da calculadora
         self.__BTN_DOT['command'] = partial(self.__set_dot_in_input, '.')
