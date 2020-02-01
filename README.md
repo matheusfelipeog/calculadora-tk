@@ -10,7 +10,7 @@ O projeto tem por objetivo incentivar iniciantes na programação em python a co
 
 Sendo assim, foi criado a Calculadora Tk com funcionalidades matemáticas básicas e com alguns erros propositais para que as correções e ampliações de novas funcionalidades sejam feitas pelo público alvo (Iniciantes).
 
-## Contribuição
+## Para contribuir
 Siga os passos abaixo:
 
 1. Faça o `Fork` do projeto [Calculadora Tk](<https://github.com/matheusfelipeog/calculadora-tk.git>) no canto superior direito da tela;
@@ -19,6 +19,11 @@ Siga os passos abaixo:
 4. Após ter realizado suas modificações, faça um `commit` (`git commit -m "Descrição da modificação"`);
 5. Faça o `Push` para seu repositório (`git push origin feature/nome_modificação`);
 6. No seu repositório no *Github* crie uma `Pull Request` para que seja avaliada a suas modificações para ser feito o `merge` no projeto principal.
+
+## Contribuidor(es)
+
+| [<img src="https://avatars2.githubusercontent.com/u/25591464?s=115&v=4" /><br /><sub>@aguiarcandre</sub>](https://github.com/aguiarcandre) |
+|:-:|
 
 ## Para ideias/Bugs
 Caso encontre algum bug rie uma `issue` descrevendo o Bug encontrado que tem que ser resolvido, informando o passo a passo para replicá-lo.
