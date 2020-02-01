@@ -42,8 +42,8 @@ class Calculadora(object):
 
         # Edição da Top-Level
         self.master.title('Calculadora Tk')
-        self.master.maxsize(width=335, height=390)
-        self.master.minsize(width=335, height=390)
+        self.master.maxsize(width=335, height=415)
+        self.master.minsize(width=335, height=415)
         self.master.geometry('-150+100')
         self.master['bg'] = self.style.master_bg
 
