@@ -63,7 +63,7 @@ class Dark(object):
 class White(object):
     """Classe para o tema White da calculadora"""
     def __init__(self):
-        self.master_bg = '#f5f6fa'
+        self.master_bg = '#6F9CCE'
         self.frame_bg = '#f5f6fa'
 
         self.INPUT = {
@@ -161,3 +161,61 @@ class DefaultStyleForMacOS(object):
             'font': 'Arial 14 bold'
         }
         
+class Blue(object):
+    """Classe para o tema azul da calculadora"""
+    def __init__(self):
+        self.master_bg = '#f5f6fa'
+        self.frame_bg = '#f5f6fa'
+
+        self.INPUT = {
+            'bg': '#f5f6fa',
+            'fg': '#2d3436',
+            'borderwidth': 0,
+            'width': 15,
+            'font': 'Arial 28 bold',
+            'justify': 'right'
+        }
+
+        self.BTN_DEFAULT = {
+            'bg': '#0a77b0',
+            'fg': '#2d3436',
+            'activebackground': '#200d9f',
+            'activeforeground': '#000000',
+            'borderwidth': 0,
+            'width': 6,
+            'height': 2,
+            'font': 'Arial 14 bold'
+        }
+
+        self.BTN_NUMERICO = {
+            'bg': '#0097e6',
+            'fg': '#2d3436',
+            'activebackground': '#200d9f',
+            'activeforeground': '#000000',
+            'borderwidth': 0,
+            'width': 6,
+            'height': 2,
+            'font': 'Arial 14 bold'
+        }
+
+        self.BTN_OPERADOR = {
+            'bg': '#0a77b0',
+            'fg': '#2d3436',
+            'activebackground': '#200d9f',
+            'activeforeground': '#000000',
+            'borderwidth': 0,
+            'width': 6,
+            'height': 2,
+            'font': 'Arial 14 bold'
+        }
+
+        self.BTN_CLEAR = {
+            'bg': '#0a77b0',
+            'fg': '#2d3436',
+            'activebackground': '#200d9f',
+            'activeforeground': '#000000',
+            'borderwidth': 0,
+            'width': 6,
+            'height': 2,
+            'font': 'Arial 14 bold'
+        }
