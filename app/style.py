@@ -10,6 +10,7 @@ class Dark(object):
             'bg': '#252729',
             'fg': 'white',
             'borderwidth': 0,
+            'highlightthickness': 0,
             'width': 15,
             'font': 'Arial 28 bold',
             'justify': 'right'
@@ -21,6 +22,7 @@ class Dark(object):
             'activebackground': '#635f5f',
             'activeforeground': '#000000',
             'borderwidth': 0,
+            'highlightthickness': 0,
             'width': 6,
             'height': 2,
             'font': 'Arial 14 bold'
@@ -32,6 +34,7 @@ class Dark(object):
             'activebackground': '#635f5f',
             'activeforeground': '#000000',
             'borderwidth': 0,
+            'highlightthickness': 0,
             'width': 6,
             'height': 2,
             'font': 'Arial 14 bold'
@@ -43,6 +46,7 @@ class Dark(object):
             'activebackground': '#0097e6',
             'activeforeground': '#000000',
             'borderwidth': 0,
+            'highlightthickness': 0,
             'width': 6,
             'height': 2,
             'font': 'Arial 14 bold'
@@ -54,6 +58,7 @@ class Dark(object):
             'activebackground': '#d63031',
             'activeforeground': '#000000',
             'borderwidth': 0,
+            'highlightthickness': 0,
             'width': 6,
             'height': 2,
             'font': 'Arial 14 bold'
@@ -70,6 +75,7 @@ class White(object):
             'bg': '#f5f6fa',
             'fg': '#2d3436',
             'borderwidth': 0,
+            'highlightthickness': 0,
             'width': 15,
             'font': 'Arial 28 bold',
             'justify': 'right'
@@ -81,6 +87,7 @@ class White(object):
             'activebackground': '#635f5f',
             'activeforeground': '#000000',
             'borderwidth': 0,
+            'highlightthickness': 0,
             'width': 6,
             'height': 2,
             'font': 'Arial 14 bold'
@@ -92,6 +99,7 @@ class White(object):
             'activebackground': '#635f5f',
             'activeforeground': '#000000',
             'borderwidth': 0,
+            'highlightthickness': 0,
             'width': 6,
             'height': 2,
             'font': 'Arial 14 bold'
@@ -103,6 +111,7 @@ class White(object):
             'activebackground': '#0097e6',
             'activeforeground': '#000000',
             'borderwidth': 0,
+            'highlightthickness': 0,
             'width': 6,
             'height': 2,
             'font': 'Arial 14 bold'
@@ -114,6 +123,7 @@ class White(object):
             'activebackground': '#d63031',
             'activeforeground': '#000000',
             'borderwidth': 0,
+            'highlightthickness': 0,
             'width': 6,
             'height': 2,
             'font': 'Arial 14 bold'
@@ -128,6 +138,7 @@ class DefaultStyleForMacOS(object):
 
         self.INPUT = {
             'borderwidth': 0,
+            'highlightthickness': 0,
             'width': 15,
             'font': 'Arial 28 bold',
             'justify': 'right'
@@ -135,6 +146,7 @@ class DefaultStyleForMacOS(object):
 
         self.BTN_DEFAULT = {
             'borderwidth': 0,
+            'highlightthickness': 0,
             'width': 7,
             'height': 3,
             'font': 'Arial 14 bold'
@@ -142,6 +154,7 @@ class DefaultStyleForMacOS(object):
 
         self.BTN_NUMERICO = {
             'borderwidth': 0,
+            'highlightthickness': 0,
             'width': 7,
             'height': 3,
             'font': 'Arial 14 bold'
@@ -149,6 +162,7 @@ class DefaultStyleForMacOS(object):
 
         self.BTN_OPERADOR = {
             'borderwidth': 0,
+            'highlightthickness': 0,
             'width': 7,
             'height': 3,
             'font': 'Arial 14 bold'
@@ -156,6 +170,7 @@ class DefaultStyleForMacOS(object):
 
         self.BTN_CLEAR = {
             'borderwidth': 0,
+            'highlightthickness': 0,
             'width': 7,
             'height': 3,
             'font': 'Arial 14 bold'
