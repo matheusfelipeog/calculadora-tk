@@ -160,4 +160,68 @@ class DefaultStyleForMacOS(object):
             'height': 3,
             'font': 'Arial 14 bold'
         }
-        
+
+
+class Dracula(object):
+    """Classe para o tema Dracula da calculadora"""
+    def __init__(self):
+        self.master_bg = '#282a36'
+        self.frame_bg = '#282a36'
+
+        self.INPUT = {
+            'bg': '#282a36',
+            'fg': '#f8f8f2',
+            'borderwidth': 0,
+            'highlightthickness': 0,
+            'width': 15,
+            'font': 'Arial 28 bold',
+            'justify': 'right'
+        }
+
+        self.BTN_DEFAULT = {
+            'bg': '#44475a',
+            'fg': '#f8f8f2',
+            'activebackground': '#282a36',
+            'activeforeground': '#50fa7b',
+            'borderwidth': 0,
+            'highlightthickness': 0,
+            'width': 6,
+            'height': 2,
+            'font': 'Arial 14 bold'
+        }
+
+        self.BTN_NUMERICO = {
+            'bg': '#44475a',
+            'fg': '#f8f8f2',
+            'activebackground': '#282a36',
+            'activeforeground': '#50fa7b',
+            'borderwidth': 0,
+            'highlightthickness': 0,
+            'width': 6,
+            'height': 2,
+            'font': 'Arial 14 bold'
+        }
+
+        self.BTN_OPERADOR = {
+            'bg': '#44475a',
+            'fg': '#f8f8f2',
+            'activebackground': '#6272a4',
+            'activeforeground': '#282a36',
+            'borderwidth': 0,
+            'highlightthickness': 0,
+            'width': 6,
+            'height': 2,
+            'font': 'Arial 14 bold'
+        }
+
+        self.BTN_CLEAR = {
+            'bg': '#44475a',
+            'fg': '#f8f8f2',
+            'activebackground': '#ff5555',
+            'activeforeground': '#000000',
+            'highlightthickness': 0,
+            'borderwidth': 0,
+            'width': 6,
+            'height': 2,
+            'font': 'Arial 14 bold'
+        }
