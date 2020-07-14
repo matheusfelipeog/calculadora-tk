@@ -259,7 +259,7 @@ class Dark_Blue(object):
         }
 
         self.BTN_DEFAULT = {
-            'bg': '#162130',
+            'bg': '#0e151f',
             'fg': '#f5f6fa',
             'activebackground': '#635f5f',
             'activeforeground': '#000000',
@@ -271,10 +271,10 @@ class Dark_Blue(object):
         }
 
         self.BTN_NUMERICO = {
-            'bg': '#162130',
+            'bg': '#0b111a',
             'fg': '#f5f6fa',
             'activebackground': '#0097e6',
-            'activeforeground': '#000000',
+            'activeforeground': '#162130',
             'borderwidth': 0,
             'highlightthickness': 0,
             'width': 6,
@@ -283,7 +283,7 @@ class Dark_Blue(object):
         }
 
         self.BTN_OPERADOR = {
-            'bg': '#162130',
+            'bg': '#0e151f',
             'fg': '#f5f6fa',
             'activebackground': '#635f5f',
             'activeforeground': '#000000',
@@ -295,7 +295,7 @@ class Dark_Blue(object):
         }
 
         self.BTN_CLEAR = {
-            'bg': '#162130',
+            'bg': '#0e151f',
             'fg': '#f5f6fa',
             'activebackground': '#d63031',
             'activeforeground': '#000000',

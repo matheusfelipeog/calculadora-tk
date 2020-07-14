@@ -38,7 +38,7 @@ class Calculadora(object):
         if platform.system() == 'Darwin':
             self.style = style.DefaultStyleForMacOS()
         else:
-            self.style = style.Dark_blue()
+            self.style = style.Dark_Blue()
 
         # Edição da Top-Level
         self.master.title('Calculadora Tk')
