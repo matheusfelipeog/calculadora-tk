@@ -245,7 +245,7 @@ class Dracula(object):
 class Dark_Blue(object):
     """Classe para o tema Dark Blue da calculadora"""
     def __init__(self):
-        self.master_bg = '#252728'
+        self.master_bg = '#252729'
         self.frame_bg = '#252729'
 
         self.INPUT = {
