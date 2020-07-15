@@ -22,8 +22,8 @@ Siga os passos abaixo:
 
 ## Contribuidores
 
-| [<img src="https://avatars2.githubusercontent.com/u/25591464?s=115" /><br /><sub>@aguiarcandre</sub>](https://github.com/aguiarcandre) | [<img src="https://avatars2.githubusercontent.com/u/52337966?s=115" /><br /><sub>@carlos3g</sub>](https://github.com/carlos3g) |
-|:-:|:-:|
+| [<img src="https://avatars2.githubusercontent.com/u/25591464?s=115" /><br /><sub>@aguiarcandre</sub>](https://github.com/aguiarcandre) | [<img src="https://avatars2.githubusercontent.com/u/52337966?s=115" /><br /><sub>@carlos3g</sub>](https://github.com/carlos3g) | [<img src="https://avatars0.githubusercontent.com/u/67281981?s=115" /><br /><sub>@ericllma</sub>](https://github.com/ericllma) |
+|:-:|:-:|:-:| 
 
 ## Para ideias/Bugs
 Caso encontre algum bug rie uma `issue` descrevendo o Bug encontrado que tem que ser resolvido, informando o passo a passo para replicá-lo.
