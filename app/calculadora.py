@@ -7,10 +7,10 @@
 import tkinter as tk
 import platform
 from functools import partial
+from json import load as json_load
 
 # Módulos próprios
 from app.calculador import Calculador
-import app.style as style
 
 
 class Calculadora(object):
@@ -34,33 +34,56 @@ class Calculadora(object):
         self.master = master
         self.calc = Calculador()
 
+        self.settings = self._load_settings()
+
         # Define estilo padrão para macOS, caso seja o sistema operacional utilizado
         if platform.system() == 'Darwin':
-            self.style = style.DefaultStyleForMacOS()
+            self.theme = self._get_theme('Default Theme For MacOS')
         else:
-            self.style = style.Dark()
+            self.theme = self._get_theme(self.settings['current_theme'])
 
         # Edição da Top-Level
         self.master.title('Calculadora Tk')
         self.master.maxsize(width=335, height=415)
         self.master.minsize(width=335, height=415)
         self.master.geometry('-150+100')
-        self.master['bg'] = self.style.master_bg
+        self.master['bg'] = self.theme['master_bg']
 
         # Área do input
-        self._frame_input = tk.Frame(self.master, bg=self.style.frame_bg, pady=4)
+        self._frame_input = tk.Frame(self.master, bg=self.theme['frame_bg'], pady=4)
         self._frame_input.pack()
 
         # Área dos botões
-        self._frame_buttons = tk.Frame(self.master, bg=self.style.frame_bg, padx=2)
+        self._frame_buttons = tk.Frame(self.master, bg=self.theme['frame_bg'], padx=2)
         self._frame_buttons.pack()
 
         # Funções de inicialização 
         self._create_input(self._frame_input)
         self._create_buttons(self._frame_buttons)
 
+    @staticmethod
+    def _load_settings():
+        """Utilitário para carregar o arquivo de confirgurações da calculadora."""
+        with open('./app/settings/settings.json', mode='r', encoding='utf-8') as f:
+            settings = json_load(f)
+        
+        return settings
+
+    def _get_theme(self, name='Dark'):
+        """Retorna as configurações de estilo para o theme especificado."""
+
+        list_of_themes = self.settings['themes']
+
+        found_theme = None
+        for t in list_of_themes:
+            if name == t['name']:
+                found_theme = t
+                break
+        
+        return found_theme
+        
     def _create_input(self, master):
-        self._entrada = tk.Entry(master, cnf=self.style.INPUT)
+        self._entrada = tk.Entry(master, cnf=self.theme['INPUT'])
         self._entrada.insert(0,0)
         self._entrada.pack()
 
@@ -68,36 +91,47 @@ class Calculadora(object):
         """"Metódo responsável pela criação de todos os botões da calculadora,
         indo desde adição de eventos em cada botão à distribuição no layout grid.
         """
-        self._BTN_NUM_0 = tk.Button(master, text=0, cnf=self.style.BTN_NUMERICO)
-        self._BTN_NUM_1 = tk.Button(master, text=1, cnf=self.style.BTN_NUMERICO)
-        self._BTN_NUM_2 = tk.Button(master, text=2, cnf=self.style.BTN_NUMERICO)
-        self._BTN_NUM_3 = tk.Button(master, text=3, cnf=self.style.BTN_NUMERICO)
-        self._BTN_NUM_4 = tk.Button(master, text=4, cnf=self.style.BTN_NUMERICO)
-        self._BTN_NUM_5 = tk.Button(master, text=5, cnf=self.style.BTN_NUMERICO)
-        self._BTN_NUM_6 = tk.Button(master, text=6, cnf=self.style.BTN_NUMERICO)
-        self._BTN_NUM_7 = tk.Button(master, text=7, cnf=self.style.BTN_NUMERICO)
-        self._BTN_NUM_8 = tk.Button(master, text=8, cnf=self.style.BTN_NUMERICO)
-        self._BTN_NUM_9 = tk.Button(master, text=9, cnf=self.style.BTN_NUMERICO)
+
+        # Seta configurações globais (width, height font etc) no botão especificado.
+        self.theme['BTN_NUMERICO'].update(self.settings['global'])
+
+        self._BTN_NUM_0 = tk.Button(master, text=0, cnf=self.theme['BTN_NUMERICO'])
+        self._BTN_NUM_1 = tk.Button(master, text=1, cnf=self.theme['BTN_NUMERICO'])
+        self._BTN_NUM_2 = tk.Button(master, text=2, cnf=self.theme['BTN_NUMERICO'])
+        self._BTN_NUM_3 = tk.Button(master, text=3, cnf=self.theme['BTN_NUMERICO'])
+        self._BTN_NUM_4 = tk.Button(master, text=4, cnf=self.theme['BTN_NUMERICO'])
+        self._BTN_NUM_5 = tk.Button(master, text=5, cnf=self.theme['BTN_NUMERICO'])
+        self._BTN_NUM_6 = tk.Button(master, text=6, cnf=self.theme['BTN_NUMERICO'])
+        self._BTN_NUM_7 = tk.Button(master, text=7, cnf=self.theme['BTN_NUMERICO'])
+        self._BTN_NUM_8 = tk.Button(master, text=8, cnf=self.theme['BTN_NUMERICO'])
+        self._BTN_NUM_9 = tk.Button(master, text=9, cnf=self.theme['BTN_NUMERICO'])
+
+        # Seta configurações globais (width, height font etc) no botão especificado.
+        self.theme['BTN_OPERADOR'].update(self.settings['global'])
 
         # Instânciação dos botões dos operadores númericos
-        self._BTN_SOMA = tk.Button(master, text='+', cnf=self.style.BTN_OPERADOR)
-        self._BTN_SUB = tk.Button(master, text='-', cnf=self.style.BTN_OPERADOR)
-        self._BTN_DIV = tk.Button(master, text='/', cnf=self.style.BTN_OPERADOR)
-        self._BTN_MULT = tk.Button(master, text='*', cnf=self.style.BTN_OPERADOR)
-        self._BTN_EXP = tk.Button(master, text='^', cnf=self.style.BTN_OPERADOR)
-        self._BTN_RAIZ = tk.Button(master, text='√', cnf=self.style.BTN_OPERADOR)
+        self._BTN_SOMA = tk.Button(master, text='+', cnf=self.theme['BTN_OPERADOR'])
+        self._BTN_SUB = tk.Button(master, text='-', cnf=self.theme['BTN_OPERADOR'])
+        self._BTN_DIV = tk.Button(master, text='/', cnf=self.theme['BTN_OPERADOR'])
+        self._BTN_MULT = tk.Button(master, text='*', cnf=self.theme['BTN_OPERADOR'])
+        self._BTN_EXP = tk.Button(master, text='^', cnf=self.theme['BTN_OPERADOR'])
+        self._BTN_RAIZ = tk.Button(master, text='√', cnf=self.theme['BTN_OPERADOR'])
+
+        # Seta configurações globais (width, height font etc) no botão especificado.
+        self.theme['BTN_DEFAULT'].update(self.settings['global'])
+        self.theme['BTN_CLEAR'].update(self.settings['global'])
 
         # Instânciação dos botões de funcionalidades da calculadora
-        self._BTN_ABRE_PARENTESE = tk.Button(master, text='(', cnf=self.style.BTN_DEFAULT)
-        self._BTN_FECHA_PARENTESE = tk.Button(master, text=')', cnf=self.style.BTN_DEFAULT)
-        self._BTN_CLEAR = tk.Button(master, text='C', cnf=self.style.BTN_DEFAULT)
-        self._BTN_DEL = tk.Button(master, text='<', cnf=self.style.BTN_CLEAR)
-        self._BTN_RESULT = tk.Button(master, text='=', cnf=self.style.BTN_OPERADOR)
-        self._BTN_DOT = tk.Button(master, text='.', cnf=self.style.BTN_DEFAULT)
+        self._BTN_ABRE_PARENTESE = tk.Button(master, text='(', cnf=self.theme['BTN_DEFAULT'])
+        self._BTN_FECHA_PARENTESE = tk.Button(master, text=')', cnf=self.theme['BTN_DEFAULT'])
+        self._BTN_CLEAR = tk.Button(master, text='C', cnf=self.theme['BTN_DEFAULT'])
+        self._BTN_DEL = tk.Button(master, text='<', cnf=self.theme['BTN_CLEAR'])
+        self._BTN_RESULT = tk.Button(master, text='=', cnf=self.theme['BTN_OPERADOR'])
+        self._BTN_DOT = tk.Button(master, text='.', cnf=self.theme['BTN_DEFAULT'])
 
         # Instânciação dos botões vazios, para futura implementação
-        self._BTN_VAZIO1 = tk.Button(master, text='', cnf=self.style.BTN_OPERADOR)
-        self._BTN_VAZIO2 = tk.Button(master, text='', cnf=self.style.BTN_OPERADOR)
+        self._BTN_VAZIO1 = tk.Button(master, text='', cnf=self.theme['BTN_OPERADOR'])
+        self._BTN_VAZIO2 = tk.Button(master, text='', cnf=self.theme['BTN_OPERADOR'])
 
         # Distribuição dos botões em um gerenciador de layout grid
         # Linha 0
