@@ -4,10 +4,14 @@
 # @github: github.com/matheusfelipeog
 
 # Builtins
+import sys 
+import os
+from tkinter import *
 import tkinter as tk
 import platform
 from functools import partial
 from json import load as json_load
+import json
 
 # Módulos próprios
 from app.calculador import Calculador
@@ -35,7 +39,7 @@ class Calculadora(object):
         self.calc = Calculador()
 
         self.settings = self._load_settings()
-
+        
         # Define estilo padrão para macOS, caso seja o sistema operacional utilizado
         if platform.system() == 'Darwin':
             self.theme = self._get_theme('Default Theme For MacOS')
@@ -60,6 +64,7 @@ class Calculadora(object):
         # Funções de inicialização 
         self._create_input(self._frame_input)
         self._create_buttons(self._frame_buttons)
+        self._create_menu(self._frame_buttons)
 
     @staticmethod
     def _load_settings():
@@ -86,6 +91,66 @@ class Calculadora(object):
         self._entrada = tk.Entry(master, cnf=self.theme['INPUT'])
         self._entrada.insert(0,0)
         self._entrada.pack()
+
+
+    def _create_menu(self, master):
+        self.master.option_add('*tearOff', FALSE)
+        calc_menu = Menu(self.master)
+        self.master.config(menu=calc_menu)
+
+        #Configuração
+        config = Menu(calc_menu)
+        theme = Menu(config)
+        #Menu tema
+        config.add_cascade(label='Tema', menu=theme)
+        theme.add_command(label='Dark', command=self._set_theme_Dark)
+        theme.add_command(label='White', command=self._set_theme_White)
+        theme.add_command(label='Dracula', command=self._set_theme_Dracula)
+        """
+        Mac Os theme not configured
+        theme.add_command(label='MacOS', command=self._set_theme_MacOS)
+        """
+        theme.add_command(label='Dark Blue', command=self._set_theme_Dark_Blue)
+        #Configuração
+        config.add_separator()
+        config.add_command(label='Salir', command=self._exit)
+        calc_menu.add_cascade(label='Configuração', menu=config)
+        
+    def _set_theme_Dark(self):
+        self.settings['current_theme'] = "Dark"
+        print(self.settings)
+        with open('./app/settings/settings.json', 'w') as outfile:
+            json.dump(self.settings, outfile)
+        self._realod_app()
+
+    def _set_theme_White(self):
+        self.settings['current_theme'] = "White"
+        print(self.settings)
+        with open('./app/settings/settings.json', 'w') as outfile:
+            json.dump(self.settings, outfile)
+        self._realod_app()
+
+    def _set_theme_Dracula(self):
+        self.settings['current_theme'] = "Dracula"
+        print(self.settings)
+        with open('./app/settings/settings.json', 'w') as outfile:
+            json.dump(self.settings, outfile)
+        self._realod_app()
+    """
+    Mac Os theme not configured
+    def _set_theme_MacOS(self):
+        self.settings['current_theme'] = "Default Theme For MacOS"
+        print(self.settings)
+        with open('./app/settings/settings.json', 'w') as outfile:
+            json.dump(self.settings, outfile)
+        self._realod_app()
+    """
+    def _set_theme_Dark_Blue(self):
+        self.settings['current_theme'] = "Dark"
+        print(self.settings)
+        with open('./app/settings/settings.json', 'w') as outfile:
+            json.dump(self.settings, outfile)
+        self._realod_app()
 
     def _create_buttons(self, master):
         """"Metódo responsável pela criação de todos os botões da calculadora,
@@ -293,3 +358,11 @@ class Calculadora(object):
     def start(self):
         print('\33[92mCalculadora Tk Iniciada. . .\33[m\n')
         self.master.mainloop()
+    
+    def _realod_app(self):
+        """Reinicia o aplicativo."""
+        python = sys.executable  # Recupera o path do executável do python
+        os.execl(python, python, * sys.argv)
+
+    def _exit(self):
+        exit()
