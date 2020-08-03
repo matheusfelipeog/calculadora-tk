@@ -113,7 +113,7 @@ class Calculadora(object):
         theme.add_command(label='Dark Blue', command=self._set_theme_Dark_Blue)
         #Configuração
         config.add_separator()
-        config.add_command(label='Salir', command=self._exit)
+        config.add_command(label='Sair', command=self._exit)
         calc_menu.add_cascade(label='Configuração', menu=config)
         
     def _set_theme_Dark(self):
