@@ -120,7 +120,7 @@ class Calculadora(object):
         self.settings['current_theme'] = "Dark"
         print(self.settings)
         with open('./app/settings/settings.json', 'w') as outfile:
-            json.dump(self.settings, outfile)
+            json.dump(self.settings, outfile, indent=4)
         self._realod_app()
 
     def _set_theme_White(self):
