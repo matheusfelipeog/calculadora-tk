@@ -119,7 +119,7 @@ class Calculadora(object):
     def _set_theme_Dark(self):
         self.settings['current_theme'] = "Dark"
         print(self.settings)
-        with open('./app/settings/settings.json', 'w') as outfile:
+        with open('./app/settings/settings.json', 'w', encoding='utf-8') as outfile:
             json.dump(self.settings, outfile, indent=4)
         self._realod_app()
 
