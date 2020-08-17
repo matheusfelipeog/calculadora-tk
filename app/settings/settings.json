@@ -153,7 +153,7 @@
 
             "INPUT": {
                 "bg": "#282a36",
-                "fg": "#282a36",
+                "fg": "#f8f8f2",
                 "borderwidth": 0,
                 "highlightthickness": 0,
                 "width": 15,
@@ -162,7 +162,7 @@
             },
 
             "BTN_DEFAULT": {
-                "bg": "#d4d4d4",
+                "bg": "#44475a",
                 "fg": "#f8f8f2",
                 "activebackground": "#282a36",
                 "activeforeground": "#50fa7b"
