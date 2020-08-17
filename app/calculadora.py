@@ -64,7 +64,7 @@ class Calculadora(object):
         # Funções de inicialização 
         self._create_input(self._frame_input)
         self._create_buttons(self._frame_buttons)
-        self._create_menu(self._frame_buttons)
+        self._create_menu(self.master)
 
     @staticmethod
     def _load_settings():
