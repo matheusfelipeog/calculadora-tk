@@ -284,7 +284,8 @@ class Calculadora(object):
         self._entrada.delete(0, len(self._entrada.get()))
         self._entrada.insert(0, result)
 
-    def _lenght_max(self, data_in_input):
+    @staticmethod
+    def _lenght_max(data_in_input):
         """Para verificar se o input atingiu a quantidade de caracteres máxima"""
         if len(str(data_in_input)) >= 15:
             return False

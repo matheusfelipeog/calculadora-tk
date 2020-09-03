@@ -21,14 +21,15 @@ class Calculador(object):
 
             return self.__format_result(result=result)
         except (NameError, ZeroDivisionError, SyntaxError, ValueError):
-            return 'Erro' 
+            return 'Erro'
 
-    def __format_result(self, result):
+    @staticmethod
+    def __format_result(result):
         """Formata o resultado em notação cientifica caso seja muito grande
         e retorna o valor formatado em tipo string"""
 
         result = str(result)
         if len(result) > 15:
             result = '{:5.5E}'.format(float(result))
-            
+
         return result
