@@ -92,7 +92,7 @@ class Calculadora(object):
         self._entrada.insert(0,0)
         self._entrada.pack()
 
-def _create_menu(self, master):
+    def _create_menu(self, master):
         self.master.option_add('*tearOff', FALSE)
         calc_menu = Menu(self.master)
         self.master.config(menu=calc_menu)
@@ -110,15 +110,17 @@ def _create_menu(self, master):
             else:
                 theme.add_command(label=name, command=partial(self._change_theme_to, name))
         #Configuração
+        calc_menu.add_cascade(label='Configuração', menu=config)
+        config.add_cascade(label='Tema', menu=theme)
+
         config.add_separator()
         config.add_command(label='Sair', command=self._exit)
-        calc_menu.add_cascade(label='Configuração', menu=config)
 
     def _change_theme_to(self, name='Dark'):
         self.settings['current_theme'] = name
 
         with open('./app/settings/settings.json', 'w') as outfile:
-            json.dump(self.settings, outfile)
+            json.dump(self.settings, outfile, indent=4)
 
         self._realod_app()
         
