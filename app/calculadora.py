@@ -92,8 +92,7 @@ class Calculadora(object):
         self._entrada.insert(0,0)
         self._entrada.pack()
 
-
-    def _create_menu(self, master):
+def _create_menu(self, master):
         self.master.option_add('*tearOff', FALSE)
         calc_menu = Menu(self.master)
         self.master.config(menu=calc_menu)
@@ -102,56 +101,27 @@ class Calculadora(object):
         config = Menu(calc_menu)
         theme = Menu(config)
         #Menu tema
-        config.add_cascade(label='Tema', menu=theme)
-        theme.add_command(label='Dark', command=self._set_theme_Dark)
-        theme.add_command(label='White', command=self._set_theme_White)
-        theme.add_command(label='Dracula', command=self._set_theme_Dracula)
-        """
-        Mac Os theme not configured
-        theme.add_command(label='MacOS', command=self._set_theme_MacOS)
-        """
-        theme.add_command(label='Dark Blue', command=self._set_theme_Dark_Blue)
+        theme_incompatible = ['Default Theme For MacOS']
+        for t in self.settings['themes']:
+
+            name = t['name']
+            if name in theme_incompatible:  # Ignora os temas não compatíveis.
+                continue
+            else:
+                theme.add_command(label=name, command=partial(self._change_theme_to, name))
         #Configuração
         config.add_separator()
         config.add_command(label='Sair', command=self._exit)
         calc_menu.add_cascade(label='Configuração', menu=config)
+
+    def _change_theme_to(self, name='Dark'):
+        self.settings['current_theme'] = name
+
+        with open('./app/settings/settings.json', 'w') as outfile:
+            json.dump(self.settings, outfile)
+
+        self._realod_app()
         
-    def _set_theme_Dark(self):
-        self.settings['current_theme'] = "Dark"
-        print(self.settings)
-        with open('./app/settings/settings.json', 'w', encoding='utf-8') as outfile:
-            json.dump(self.settings, outfile, indent=4)
-        self._realod_app()
-
-    def _set_theme_White(self):
-        self.settings['current_theme'] = "White"
-        print(self.settings)
-        with open('./app/settings/settings.json', 'w') as outfile:
-            json.dump(self.settings, outfile)
-        self._realod_app()
-
-    def _set_theme_Dracula(self):
-        self.settings['current_theme'] = "Dracula"
-        print(self.settings)
-        with open('./app/settings/settings.json', 'w') as outfile:
-            json.dump(self.settings, outfile)
-        self._realod_app()
-    """
-    Mac Os theme not configured
-    def _set_theme_MacOS(self):
-        self.settings['current_theme'] = "Default Theme For MacOS"
-        print(self.settings)
-        with open('./app/settings/settings.json', 'w') as outfile:
-            json.dump(self.settings, outfile)
-        self._realod_app()
-    """
-    def _set_theme_Dark_Blue(self):
-        self.settings['current_theme'] = "Dark"
-        print(self.settings)
-        with open('./app/settings/settings.json', 'w') as outfile:
-            json.dump(self.settings, outfile)
-        self._realod_app()
-
     def _create_buttons(self, master):
         """"Metódo responsável pela criação de todos os botões da calculadora,
         indo desde adição de eventos em cada botão à distribuição no layout grid.
