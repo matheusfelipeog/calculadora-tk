@@ -6,12 +6,14 @@
 # Builtins
 import sys 
 import os
-from tkinter import *
-import tkinter as tk
 import platform
+
+import tkinter as tk
+from tkinter import Menu, FALSE
+
 from functools import partial
 from json import load as json_load
-import json
+from json import dump as json_dump
 
 # Módulos próprios
 from app.calculador import Calculador
@@ -120,7 +122,7 @@ class Calculadora(object):
         self.settings['current_theme'] = name
 
         with open('./app/settings/settings.json', 'w') as outfile:
-            json.dump(self.settings, outfile, indent=4)
+            json_dump(self.settings, outfile, indent=4)
 
         self._realod_app()
         
