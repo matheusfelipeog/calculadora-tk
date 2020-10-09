@@ -16,7 +16,7 @@ from json import load as json_load
 from json import dump as json_dump
 
 # Módulos próprios
-from app.calculador import Calculador
+from .calculador import Calculador
 
 
 class Calculadora(object):
