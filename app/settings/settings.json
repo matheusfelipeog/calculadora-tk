@@ -1,21 +1,17 @@
 {
     "current_theme": "Dark",
-
     "global": {
         "borderwidth": 0,
         "highlightthickness": 0,
         "width": 6,
         "height": 2,
         "font": "Arial 14 bold"
-    },  
-    
+    },
     "themes": [
         {
             "name": "Dark",
-            
             "master_bg": "#252729",
             "frame_bg": "#252729",
-
             "INPUT": {
                 "bg": "#252729",
                 "fg": "#ffffff",
@@ -25,28 +21,24 @@
                 "font": "Arial 28 bold",
                 "justify": "right"
             },
-
             "BTN_DEFAULT": {
                 "bg": "#0e0f0f",
                 "fg": "#f5f6fa",
                 "activebackground": "#635f5f",
                 "activeforeground": "#000000"
             },
-
             "BTN_NUMERICO": {
                 "bg": "#050505",
                 "fg": "#f5f6fa",
                 "activebackground": "#635f5f",
                 "activeforeground": "#000000"
             },
-
             "BTN_OPERADOR": {
                 "bg": "#0e0f0f",
                 "fg": "#f5f6fa",
                 "activebackground": "#0097e6",
                 "activeforeground": "#000000"
             },
-
             "BTN_CLEAR": {
                 "bg": "#0e0f0f",
                 "fg": "#f5f6fa",
@@ -54,13 +46,10 @@
                 "activeforeground": "#000000"
             }
         },
-
         {
             "name": "White",
-
             "master_bg": "#f5f6fa",
             "frame_bg": "#f5f6fa",
-
             "INPUT": {
                 "bg": "#f5f6fa",
                 "fg": "#2d3436",
@@ -70,28 +59,24 @@
                 "font": "Arial 28 bold",
                 "justify": "right"
             },
-
             "BTN_DEFAULT": {
                 "bg": "#d4d4d4",
                 "fg": "#2d3436",
                 "activebackground": "#635f5f",
                 "activeforeground": "#000000"
             },
-
             "BTN_NUMERICO": {
                 "bg": "#adacac",
                 "fg": "#2d3436",
                 "activebackground": "#635f5f",
                 "activeforeground": "#000000"
             },
-
             "BTN_OPERADOR": {
                 "bg": "#d4d4d4",
                 "fg": "#2d3436",
                 "activebackground": "#0097e6",
                 "activeforeground": "#000000"
             },
-
             "BTN_CLEAR": {
                 "bg": "#d4d4d4",
                 "fg": "#2d3436",
@@ -99,13 +84,10 @@
                 "activeforeground": "#000000"
             }
         },
-
         {
             "name": "Default Theme For MacOS",
-
             "master_bg": "",
             "frame_bg": "",
-
             "INPUT": {
                 "bg": "",
                 "fg": "",
@@ -115,28 +97,24 @@
                 "font": "Arial 28 bold",
                 "justify": "right"
             },
-
             "BTN_DEFAULT": {
                 "bg": "",
                 "fg": "",
                 "activebackground": "",
                 "activeforeground": ""
             },
-
             "BTN_NUMERICO": {
                 "bg": "",
                 "fg": "",
                 "activebackground": "",
                 "activeforeground": ""
             },
-
             "BTN_OPERADOR": {
                 "bg": "",
                 "fg": "",
                 "activebackground": "",
                 "activeforeground": ""
             },
-
             "BTN_CLEAR": {
                 "bg": "",
                 "fg": "",
@@ -144,13 +122,10 @@
                 "activeforeground": ""
             }
         },
-
         {
             "name": "Dracula",
-
             "master_bg": "#282a36",
             "frame_bg": "#282a36",
-
             "INPUT": {
                 "bg": "#282a36",
                 "fg": "#f8f8f2",
@@ -160,28 +135,24 @@
                 "font": "Arial 28 bold",
                 "justify": "right"
             },
-
             "BTN_DEFAULT": {
                 "bg": "#44475a",
                 "fg": "#f8f8f2",
                 "activebackground": "#282a36",
                 "activeforeground": "#50fa7b"
             },
-
             "BTN_NUMERICO": {
                 "bg": "#44475a",
                 "fg": "#f8f8f2",
                 "activebackground": "#282a36",
                 "activeforeground": "#50fa7b"
             },
-
             "BTN_OPERADOR": {
                 "bg": "#44475a",
                 "fg": "#f8f8f2",
                 "activebackground": "#6272a4",
                 "activeforeground": "#282a36"
             },
-
             "BTN_CLEAR": {
                 "bg": "#44475a",
                 "fg": "#f8f8f2",
@@ -189,13 +160,10 @@
                 "activeforeground": "#000000"
             }
         },
-
         {
             "name": "Dark Blue",
-
             "master_bg": "#252729",
             "frame_bg": "#252729",
-
             "INPUT": {
                 "bg": "#252729",
                 "fg": "#ffffff",
@@ -205,28 +173,24 @@
                 "font": "Arial 28 bold",
                 "justify": "right"
             },
-
             "BTN_DEFAULT": {
                 "bg": "#0e151f",
                 "fg": "#f5f6fa",
                 "activebackground": "#635f5f",
                 "activeforeground": "#000000"
             },
-
             "BTN_NUMERICO": {
                 "bg": "#0e151f",
                 "fg": "#f5f6fa",
                 "activebackground": "#0097e6",
                 "activeforeground": "#162130"
             },
-
             "BTN_OPERADOR": {
                 "bg": "#0e151f",
                 "fg": "#f5f6fa",
                 "activebackground": "#635f5f",
                 "activeforeground": "#000000"
             },
-
             "BTN_CLEAR": {
                 "bg": "#0e151f",
                 "fg": "#f5f6fa",
