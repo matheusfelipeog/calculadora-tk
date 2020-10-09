@@ -29,7 +29,9 @@ Caso encontre algum bug rie uma `issue` descrevendo o Bug encontrado que tem que
 E caso tenha alguma ideia de nova funcionalidade que possa ser implementada por outros iniciantes, crie uma `issue` descrevendo essa ideia. ;)
 
 ## Start
-`python main.py`
+```
+$ python main.py
+```
 
 ou crie seu próprio arquivo com o seguinte script, e depois siga o procedimento acima com o nome correspondente:
 ```Python
