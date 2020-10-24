@@ -1,5 +1,5 @@
 {
-    "current_theme": "Dark",
+    "current_theme": "Larissa",
     "global": {
         "borderwidth": 0,
         "highlightthickness": 0,
@@ -25,25 +25,45 @@
                 "bg": "#0e0f0f",
                 "fg": "#f5f6fa",
                 "activebackground": "#635f5f",
-                "activeforeground": "#000000"
+                "activeforeground": "#000000",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 6,
+                "height": 2,
+                "font": "Arial 14 bold"
             },
             "BTN_NUMERICO": {
                 "bg": "#050505",
                 "fg": "#f5f6fa",
                 "activebackground": "#635f5f",
-                "activeforeground": "#000000"
+                "activeforeground": "#000000",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 6,
+                "height": 2,
+                "font": "Arial 14 bold"
             },
             "BTN_OPERADOR": {
                 "bg": "#0e0f0f",
                 "fg": "#f5f6fa",
                 "activebackground": "#0097e6",
-                "activeforeground": "#000000"
+                "activeforeground": "#000000",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 6,
+                "height": 2,
+                "font": "Arial 14 bold"
             },
             "BTN_CLEAR": {
                 "bg": "#0e0f0f",
                 "fg": "#f5f6fa",
                 "activebackground": "#d63031",
-                "activeforeground": "#000000"
+                "activeforeground": "#000000",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 6,
+                "height": 2,
+                "font": "Arial 14 bold"
             }
         },
         {
@@ -158,6 +178,44 @@
                 "fg": "#f8f8f2",
                 "activebackground": "#ff5555",
                 "activeforeground": "#000000"
+            }
+        },
+        {
+            "name": "Larissa",
+            "master_bg": "#50E598",
+            "frame_bg": "#50E598",
+            "INPUT": {
+                "bg": "#50E598",
+                "fg": "#4D0B04",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#4D0B04",
+                "fg": "#FFD6F9",
+                "activebackground": "#0B4D2B",
+                "activeforeground": "#FFD6F9"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#4D0B04",
+                "fg": "#FFD6F9",
+                "activebackground": "#0B4D2B",
+                "activeforeground": "#FFD6F9"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#4D0B04",
+                "fg": "#FFD6F9",
+                "activebackground": "#0B4D2B",
+                "activeforeground": "#FFD6F9"
+            },
+            "BTN_CLEAR": {
+                "bg": "#4D0B04",
+                "fg": "#FFD6F9",
+                "activebackground": "#0B4D2B",
+                "activeforeground": "#FFD6F9"
             }
         },
         {
