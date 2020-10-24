@@ -1,5 +1,5 @@
 {
-    "current_theme": "Dark",
+    "current_theme": "Purple",
     "global": {
         "borderwidth": 0,
         "highlightthickness": 0,
@@ -196,6 +196,44 @@
                 "fg": "#f5f6fa",
                 "activebackground": "#d63031",
                 "activeforeground": "#000000"
+            }
+        },
+        {
+            "name": "Purple",
+            "master_bg": "#0F0533",
+            "frame_bg": "#0F0533",
+            "INPUT": {
+                "bg": "#1F0543",
+                "fg": "#ffffff",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#304373",
+                "fg": "#f5f6fa",
+                "activebackground": "#1F0543",
+                "activeforeground": "#EEEEEE"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#304373",
+                "fg": "#f5f6fa",
+                "activebackground": "#1F0543",
+                "activeforeground": "#EEEEEE"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#304373",
+                "fg": "#f5f6fa",
+                "activebackground": "#1F0543",
+                "activeforeground": "#EEEEEE"
+            },
+            "BTN_CLEAR": {
+                "bg": "#304373",
+                "fg": "#f5f6fa",
+                "activebackground": "#0F0533",
+                "activeforeground": "#EEEEEE"
             }
         }
     ]
