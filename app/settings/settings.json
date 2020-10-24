@@ -15,10 +15,12 @@
             "INPUT": {
                 "bg": "#252729",
                 "fg": "#ffffff",
+                "justify": "right"
                 "borderwidth": 0,
                 "highlightthickness": 0,
-                "width": 15,
-                "font": "Arial 28 bold",
+                "width": 6,
+                "height": 2,
+                "font": "Arial 14 bold"                
                 "justify": "right"
             },
             "BTN_DEFAULT": {
@@ -181,7 +183,7 @@
             }
         },
         {
-            "name": "Larissa",
+            "name": "Verde floresta",
             "master_bg": "#50E598",
             "frame_bg": "#50E598",
             "INPUT": {
