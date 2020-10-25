@@ -86,7 +86,7 @@ class Calculadora(object):
         found_theme = None
         for t in list_of_themes:
             if name == t['name']:
-                found_theme= deepcopy(t)
+                found_theme = deepcopy(t)
                 break
         
         return found_theme
