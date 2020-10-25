@@ -15,6 +15,8 @@ from functools import partial
 from json import load as json_load
 from json import dump as json_dump
 
+from copy import deepcopy
+
 # Módulos próprios
 from .calculador import Calculador
 
@@ -84,7 +86,7 @@ class Calculadora(object):
         found_theme = None
         for t in list_of_themes:
             if name == t['name']:
-                found_theme = t
+                found_theme= deepcopy(t)
                 break
         
         return found_theme
