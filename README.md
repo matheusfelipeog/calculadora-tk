@@ -40,7 +40,7 @@ ou crie seu próprio arquivo com o seguinte script, e depois siga o procedimento
 # Builtin
 import tkinter as tk
 
-# Módulo próprio
+# Internal module
 from app.calculadora import Calculadora
 
 if __name__ == '__main__':
