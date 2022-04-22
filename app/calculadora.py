@@ -6,6 +6,9 @@
 # Builtins
 import sys 
 import os
+
+
+os.system("cls")
 import platform
 
 import tkinter as tk
