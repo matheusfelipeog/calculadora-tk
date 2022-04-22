@@ -8,6 +8,7 @@ import sys
 import os
 import platform
 
+os.system("cls")
 import tkinter as tk
 from tkinter import Menu, FALSE
 
