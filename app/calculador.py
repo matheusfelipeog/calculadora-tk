@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-
+import os
+os.system("cls")
 # @autor: Matheus Felipe
 # @github: github.com/matheusfelipeog
 
