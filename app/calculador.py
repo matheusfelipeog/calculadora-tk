@@ -6,12 +6,12 @@
 class Calculador(object):
     """Classe responsável por realizar todos os calculos da calculadora"""
     
-    def calculation(self, calc):
-        """Responsável por receber o calculo a ser realizado, retornando
-        o resultado ou uma mensagem de erro em caso de falha.
+    # def calculation(self, calc):
+    #     """Responsável por receber o calculo a ser realizado, retornando
+    #     o resultado ou uma mensagem de erro em caso de falha.
 
-        """
-        return self.__calculation_validation(calc=calc)
+    #     """
+    #     return self.__calculation_validation(calc=calc)
 
     def __calculation_validation(self, calc):
         """Responsável por verificar se o calculo informado é possível ser feito"""
