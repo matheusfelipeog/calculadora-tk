@@ -235,6 +235,44 @@
                 "activebackground": "#0F0533",
                 "activeforeground": "#EEEEEE"
             }
+        },
+        {
+            "name": "Ocean",
+            "master_bg": "#75ABBC",
+            "frame_bg": "#75ABBC",
+            "INPUT": {
+                "bg": "#75ABBC",
+                "fg": "#ffffff",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#3a506b",
+                "fg": "#f5f6fa",
+                "activebackground": "#59789E",
+                "activeforeground": "#F8F0FB"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#33465E",
+                "fg": "#f5f6fa",
+                "activebackground": "#59789E",
+                "activeforeground": "#F8F0FB"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#405876",
+                "fg": "#f5f6fa",
+                "activebackground": "#59789E",
+                "activeforeground": "#F8F0FB"
+            },
+            "BTN_CLEAR": {
+                "bg": "#3a506b",
+                "fg": "#f5f6fa",
+                "activebackground": "#59789E",
+                "activeforeground": "#F8F0FB"
+            }
         }
     ]
 }
