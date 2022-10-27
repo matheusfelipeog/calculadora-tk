@@ -22,6 +22,7 @@ Siga os passos abaixo:
 
 | [<img src="https://avatars2.githubusercontent.com/u/25591464?s=115" /><br /><sub>@aguiarcandre</sub>](https://github.com/aguiarcandre) | [<img src="https://avatars2.githubusercontent.com/u/52337966?s=115" /><br /><sub>@carlos3g</sub>](https://github.com/carlos3g) | [<img src="https://avatars0.githubusercontent.com/u/67281981?s=115" /><br /><sub>@ericllma</sub>](https://github.com/ericllma) | [<img src="https://avatars0.githubusercontent.com/u/61357388?s=115" width="115px" height="115px" /><br /><sub>@sam-chami</sub>](https://github.com/sam-chami) | [<img src="https://avatars1.githubusercontent.com/u/64209523?s=115" /><br /><sub>@taisbferreira</sub>](https://github.com/taisbferreira) | [<img src="https://avatars.githubusercontent.com/u/85250817?v=4" width="115px" height="115px"/><br /><sub>@edilsonmatola</sub>](https://github.com/edilsonmatola) |
 |:-:|:-:|:-:|:-:|:-:|:-:|
+| [<img src="https://avatars.githubusercontent.com/u/65002100?s=115" /><br /><sub>@maguzzz</sub>](https://github.com/maguzzz) |
 
 ## Para ideias/Bugs
 Caso encontre algum bug crie uma `issue` descrevendo o Bug encontrado que tem que ser resolvido, informando o passo a passo para replicá-lo.
