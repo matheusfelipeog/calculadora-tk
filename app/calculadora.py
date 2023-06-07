@@ -248,9 +248,15 @@ class Calculadora(object):
         if self._entrada.get() == '0':
             self._entrada.delete(0)
             self._entrada.insert(0 ,value)
+
         elif self._lenght_max(self._entrada.get()):
-            self._entrada.insert(len(self._entrada.get()) ,value)
-    
+        # Evita que o usuário insira zeros à esquerda caso o número não seja decimal, a fim de evitar erros
+            if len(self._entrada.get()) > 2 and self._entrada.get()[-2] in '+-*/()' and self._entrada.get()[-1] == '0':
+                self._entrada.delete(len(self._entrada.get())-1, tk.END)
+                self._entrada.insert(len(self._entrada.get()), value)
+            else:
+                self._entrada.insert(len(self._entrada.get()), value) 
+
     def _set_dot_in_input(self, dot):
         """Metódo responsável por setar o ponto de separação decimal no valor"""
         if self._entrada.get() == 'Erro':
