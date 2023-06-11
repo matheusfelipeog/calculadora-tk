@@ -171,8 +171,8 @@ class Calculadora(object):
         self._BTN_DOT = tk.Button(master, text='.', cnf=self.theme['BTN_DEFAULT'])
 
         # Instânciação dos botões vazios, para futura implementação
-        self._BTN_VAZIO1 = tk.Button(master, text='', cnf=self.theme['BTN_OPERADOR'])
-        self._BTN_VAZIO2 = tk.Button(master, text='', cnf=self.theme['BTN_OPERADOR'])
+        self._BTN_VAZIO1 = tk.Button(master, text='%', cnf=self.theme['BTN_OPERADOR'])
+        self._BTN_VAZIO2 = tk.Button(master, text='log', cnf=self.theme['BTN_OPERADOR'])
 
         # Distribuição dos botões em um gerenciador de layout grid
         # Linha 0
@@ -239,6 +239,8 @@ class Calculadora(object):
         self._BTN_DEL['command'] = self._del_last_value_in_input
         self._BTN_CLEAR['command'] = self._clear_input
         self._BTN_RESULT['command'] = self._get_data_in_input
+        self._BTN_VAZIO1['command'] = self._calculate_percentage
+        self._BTN_VAZIO2['command'] = self._calculate_log
 
     def _set_values_in_input(self, value):
         """Metódo responsável por captar o valor númerico clicado e setar no input"""
@@ -251,6 +253,32 @@ class Calculadora(object):
         elif self._lenght_max(self._entrada.get()):
             self._entrada.insert(len(self._entrada.get()) ,value)
     
+    def _calculate_percentage(self):
+        try:
+            expression = self._entrada.get() #get exoression
+            result = eval(expression) / 100 # by 100
+            self._entrada.delete(0, tk.END) #delete text
+            self._entrada.insert(tk.END, str(result)) #insert text
+        except Exception as e:
+            self._entrada.delete(0, tk.END)
+            self._entrada.insert(tk.END, 'Erro') #any error
+
+    def _calculate_log(self):
+        try:
+            expression = self._entrada.get()
+            n= 100000
+            result = n*((eval(expression) ** (1/n)) - 1)
+            self._entrada.delete(0,tk.END)
+            self._entrada.insert(tk.END,str(result))
+        except Exception as e:
+            self._entrada.delete(0, tk.END)
+            self._entrada.insert(tk.END, 'Erro')
+    
+    def myLog(x, b):
+        if x < b:
+            return 0  
+        return 1 + myLog(x/b, b)      
+      
     def _set_dot_in_input(self, dot):
         """Metódo responsável por setar o ponto de separação decimal no valor"""
         if self._entrada.get() == 'Erro':
