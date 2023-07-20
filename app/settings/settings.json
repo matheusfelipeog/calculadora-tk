@@ -273,6 +273,50 @@
                 "activebackground": "#59789E",
                 "activeforeground": "#F8F0FB"
             }
+        },
+        {
+            "name": "Northern Lights",
+            "master_bg": "#012A36",
+            "frame_bg": "#012A36",
+            "INPUT": {
+                "bg": "#012A36",
+                "fg": "#FFFFFF",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#0E628F",
+                "fg": "#FFFFFF",
+                "activebackground": "#02C3FF",
+                "activeforeground": "#000000"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#05698D",
+                "fg": "#FFFFFF",
+                "activebackground": "#02C3FF",
+                "activeforeground": "#000000"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#0E628F",
+                "fg": "#FFFFFF",
+                "activebackground": "#02C3FF",
+                "activeforeground": "#000000"
+            },
+            "BTN_CLEAR": {
+                "bg": "#0E628F",
+                "fg": "#FFFFFF",
+                "activebackground": "#FF4136",
+                "activeforeground": "#000000"
+            },
+            "ADDITIONAL_COLOR": {
+                "bg": "#02EDAB",
+                "fg": "#FFFFFF",
+                "activebackground": "#02C3FF",
+                "activeforeground": "#000000"
+            }
         }
     ]
 }
