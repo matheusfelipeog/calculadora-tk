@@ -310,12 +310,6 @@
                 "fg": "#FFFFFF",
                 "activebackground": "#FF4136",
                 "activeforeground": "#000000"
-            },
-            "ADDITIONAL_COLOR": {
-                "bg": "#02EDAB",
-                "fg": "#FFFFFF",
-                "activebackground": "#02C3FF",
-                "activeforeground": "#000000"
             }
         }
     ]
