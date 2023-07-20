@@ -157,6 +157,7 @@ class Calculadora(object):
         self._BTN_MULT = tk.Button(master, text='*', cnf=self.theme['BTN_OPERADOR'])
         self._BTN_EXP = tk.Button(master, text='^', cnf=self.theme['BTN_OPERADOR'])
         self._BTN_RAIZ = tk.Button(master, text='√', cnf=self.theme['BTN_OPERADOR'])
+        self._BTN_PERCENT = tk.Button(master, text='%', cnf=self.theme['BTN_OPERADOR'])
 
         # Seta configurações globais (width, height font etc) no botão especificado.
         self.theme['BTN_DEFAULT'].update(self.settings['global'])
@@ -171,7 +172,6 @@ class Calculadora(object):
         self._BTN_DOT = tk.Button(master, text='.', cnf=self.theme['BTN_DEFAULT'])
 
         # Instânciação dos botões vazios, para futura implementação
-        self._BTN_VAZIO1 = tk.Button(master, text='', cnf=self.theme['BTN_OPERADOR'])
         self._BTN_VAZIO2 = tk.Button(master, text='', cnf=self.theme['BTN_OPERADOR'])
 
         # Distribuição dos botões em um gerenciador de layout grid
@@ -206,7 +206,7 @@ class Calculadora(object):
         self._BTN_DIV.grid(row=4, column=3, padx=1, pady=1)
 
         # Linha 5
-        self._BTN_VAZIO1.grid(row=5, column=0, padx=1, pady=1)
+        self._BTN_PERCENT.grid(row=5, column=0, padx=1, pady=1)
         self._BTN_VAZIO2.grid(row=5, column=1, padx=1, pady=1)
         self._BTN_EXP.grid(row=5, column=2, padx=1, pady=1)
         self._BTN_RAIZ.grid(row=5, column=3, padx=1, pady=1)
@@ -230,6 +230,7 @@ class Calculadora(object):
         self._BTN_DIV['command'] = partial(self._set_operator_in_input, '/')
         self._BTN_EXP['command'] = partial(self._set_operator_in_input, '**')
         self._BTN_RAIZ['command'] = partial(self._set_operator_in_input, '**(1/2)')
+        self._BTN_PERCENT['command'] = partial(self._set_operator_in_input, '%')
 
 
         # Eventos dos botões de funcionalidades da calculadora
@@ -256,8 +257,8 @@ class Calculadora(object):
         if self._entrada.get() == 'Erro':
             return 
 
-        if self._entrada.get()[-1] not in '.+-/*' and self._lenght_max(self._entrada.get()):
-            self._entrada.insert(len(self._entrada.get()) ,dot)
+        if self._entrada.get()[-1] not in '.+-/*%' and self._lenght_max(self._entrada.get()):
+            self._entrada.insert(len(self._entrada.get()), dot)
 
     def _set_open_parent(self):
         """Metódo para setar a abertura de parenteses no input"""
@@ -267,7 +268,7 @@ class Calculadora(object):
         if self._entrada.get() == '0':
             self._entrada.delete(0)
             self._entrada.insert(len(self._entrada.get()), '(')
-        elif self._entrada.get()[-1] in '+-/*' and self._lenght_max(self._entrada.get()):
+        elif self._entrada.get()[-1] in '+-/*%' and self._lenght_max(self._entrada.get()):
             self._entrada.insert(len(self._entrada.get()), '(')
     
     def _set_close_parent(self):
@@ -277,7 +278,7 @@ class Calculadora(object):
 
         if self._entrada.get().count('(') <= self._entrada.get().count(')'):
             return
-        if self._entrada.get()[-1] not in '+-/*(' and self._lenght_max(self._entrada.get()):
+        if self._entrada.get()[-1] not in '+-/*%(' and self._lenght_max(self._entrada.get()):
             self._entrada.insert(len(self._entrada.get()), ')')
 
     def _clear_input(self):
@@ -306,7 +307,7 @@ class Calculadora(object):
             return
         # Evita casos de operadores repetidos sequêncialmente, para evitar erros
         if self._entrada.get()[-1] not in '+-*/' and self._lenght_max(self._entrada.get()):
-            self._entrada.insert(len(self._entrada.get()) ,operator)
+            self._entrada.insert(len(self._entrada.get()), operator)
             
     def _get_data_in_input(self):
         """Pega os dados com todas as operações contidos dentro do input

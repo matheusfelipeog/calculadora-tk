@@ -11,12 +11,17 @@ class Calculador(object):
         o resultado ou uma mensagem de erro em caso de falha.
 
         """
+        
         return self.__calculation_validation(calc=calc)
 
     def __calculation_validation(self, calc):
         """Responsável por verificar se o calculo informado é possível ser feito"""
 
         try:
+            # Replaces the Percent with a valid expression, (Ignores MOD) May add later
+            if '%' in calc:
+                calc = calc.replace('%', '/100')
+            
             result = eval(calc)
 
             return self.__format_result(result=result)
