@@ -32,7 +32,7 @@ class Calculadora(object):
         4 | 5 | 6 | -
         1 | 2 | 3 | +
         . | 0 | = | /
-          |   | ^ | √
+        🕑|Ans| ^ | √
 
         OBS: É necessário importar o modulo style contido na pacote view,
              e selecionar uma de suas classes de estilo.
@@ -69,6 +69,11 @@ class Calculadora(object):
         self._create_input(self._frame_input)
         self._create_buttons(self._frame_buttons)
         self._create_menu(self.master)
+
+        # Dados de história
+        self._history_results = []
+        self._history_operations = []
+        self._count_operations = 0
 
     @staticmethod
     def _load_settings():
@@ -169,10 +174,8 @@ class Calculadora(object):
         self._BTN_DEL = tk.Button(master, text='<', cnf=self.theme['BTN_CLEAR'])
         self._BTN_RESULT = tk.Button(master, text='=', cnf=self.theme['BTN_OPERADOR'])
         self._BTN_DOT = tk.Button(master, text='.', cnf=self.theme['BTN_DEFAULT'])
-
-        # Instânciação dos botões vazios, para futura implementação
-        self._BTN_VAZIO1 = tk.Button(master, text='', cnf=self.theme['BTN_OPERADOR'])
-        self._BTN_VAZIO2 = tk.Button(master, text='', cnf=self.theme['BTN_OPERADOR'])
+        self._BTN_ANS = tk.Button(master, text='ANS', cnf=self.theme['BTN_OPERADOR'])
+        self._BTN_HISTORY = tk.Button(master, text='🕑', cnf=self.theme['BTN_DEFAULT'])
 
         # Distribuição dos botões em um gerenciador de layout grid
         # Linha 0
@@ -206,8 +209,8 @@ class Calculadora(object):
         self._BTN_DIV.grid(row=4, column=3, padx=1, pady=1)
 
         # Linha 5
-        self._BTN_VAZIO1.grid(row=5, column=0, padx=1, pady=1)
-        self._BTN_VAZIO2.grid(row=5, column=1, padx=1, pady=1)
+        self._BTN_HISTORY.grid(row=5, column=0, padx=1, pady=1)
+        self._BTN_ANS.grid(row=5, column=1, padx=1, pady=1)
         self._BTN_EXP.grid(row=5, column=2, padx=1, pady=1)
         self._BTN_RAIZ.grid(row=5, column=3, padx=1, pady=1)
 
@@ -239,6 +242,10 @@ class Calculadora(object):
         self._BTN_DEL['command'] = self._del_last_value_in_input
         self._BTN_CLEAR['command'] = self._clear_input
         self._BTN_RESULT['command'] = self._get_data_in_input
+        self._BTN_ANS['command'] = self._get_ans_number
+
+        # Novas janelas para ver a história
+        self._BTN_HISTORY.bind("<Button>", lambda e: self._history_window(master))
 
     def _set_values_in_input(self, value):
         """Metódo responsável por captar o valor númerico clicado e setar no input"""
@@ -310,11 +317,27 @@ class Calculadora(object):
             
     def _get_data_in_input(self):
         """Pega os dados com todas as operações contidos dentro do input
-        para realizar o calculo"""
+        para realizar o calculo. Agora também armazena e visualizações de história processadas."""
         if self._entrada.get() == 'Erro':
             return
 
         result = self.calc.calculation(self._entrada.get())
+        if result != 'Erro':
+            if len(self._history_results) == 15:
+                self._history_results.pop(0)
+                self._history_operations.pop(0)
+            self._history_results.append(result)
+            self._history_operations.append(self._entrada.get())
+            try:
+                if self._h_window.state() == 'normal':
+                    if self._h_column == 3 and self._h_row == 10:
+                        self._spined = True
+                        self._h_row = 0
+                        self._h_column = 0
+                    self._history_buttons()
+            except (AttributeError, tk.TclError):
+                pass
+
         self._set_result_in_input(result=result)
 
     def _set_result_in_input(self, result=0):
@@ -324,6 +347,51 @@ class Calculadora(object):
 
         self._entrada.delete(0, len(self._entrada.get()))
         self._entrada.insert(0, result)
+
+    def _get_ans_number(self):
+        """Obtenha o número para o Opcó Ans"""
+        if len(self._history_results) > 0:
+            if self._entrada.get() == 'Erro':
+                self._entrada.delete(0, len(self._entrada.get()))
+            self._entrada.insert(len(self._entrada.get()), self._history_results[-1])
+        else:
+            self._clear_input()
+
+    def _history_buttons(self, i=-1):
+        """Cria os botões para a visão da história"""
+        self._count_operations += 1
+        if self._h_row % 5 == 0:
+            self._h_row = 0
+            self._h_column += 1
+        label = tk.Label(self._h_frame, text=f'Nº {self._count_operations}: {self._history_operations[i]}', fg='#ffffff', width=20)
+        label['bg'] = self.theme['master_bg']
+        label.grid(row=self._h_row, column=self._h_column,padx=2,  pady=5)
+        self._h_row += 1
+        button = tk.Button(self._h_frame, text=str(self._history_results[i]), cnf=self.theme['BTN_NUMERICO'], width=18)
+        button['command'] = partial(self._set_values_in_input, self._history_results[i])
+        button.grid(row=self._h_row, column=self._h_column, padx=3)
+        self._h_row += 1
+
+    def _history_window(self, master):
+        """Cria a janela para a visão da história chamada 'h_window' """
+        try:
+            if not self._h_window.state() == 'normal':
+                raise tk.TclError
+        except (AttributeError, tk.TclError):
+            self._h_window = tk.Toplevel(master)
+            self._h_window.grid()
+            self._h_window.title("História")
+            self._h_window.geometry('630x415')
+            self._h_window['bg'] = self.theme['master_bg']
+            self._h_window.resizable(False, False)
+            self._h_frame = tk.Frame(self._h_window)
+            self._h_frame.grid(row=0)
+            self._h_frame['bg'] = self.theme['frame_bg']
+            self._h_row = 0
+            self._h_column = 0
+            self._count_operations = 0
+            for i in range(len(self._history_results)):
+                self._history_buttons(i)
 
     def _lenght_max(self, data_in_input):
         """Para verificar se o input atingiu a quantidade de caracteres máxima"""

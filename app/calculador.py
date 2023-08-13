@@ -20,7 +20,7 @@ class Calculador(object):
             result = eval(calc)
 
             return self.__format_result(result=result)
-        except (NameError, ZeroDivisionError, SyntaxError, ValueError):
+        except (NameError, ZeroDivisionError, SyntaxError, ValueError, OverflowError):
             return 'Erro' 
 
     def __format_result(self, result):
