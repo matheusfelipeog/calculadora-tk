@@ -1,5 +1,5 @@
 {
-    "current_theme": "Dark",
+    "current_theme": "Dracula",
     "global": {
         "borderwidth": 0,
         "highlightthickness": 0,
@@ -45,7 +45,310 @@
                 "activebackground": "#d63031",
                 "activeforeground": "#000000"
             }
+        },
+        {
+            "name": "White",
+            "master_bg": "#f5f6fa",
+            "frame_bg": "#f5f6fa",
+            "INPUT": {
+                "bg": "#f5f6fa",
+                "fg": "#2d3436",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#d4d4d4",
+                "fg": "#2d3436",
+                "activebackground": "#635f5f",
+                "activeforeground": "#000000"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#adacac",
+                "fg": "#2d3436",
+                "activebackground": "#635f5f",
+                "activeforeground": "#000000"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#d4d4d4",
+                "fg": "#2d3436",
+                "activebackground": "#0097e6",
+                "activeforeground": "#000000"
+            },
+            "BTN_CLEAR": {
+                "bg": "#d4d4d4",
+                "fg": "#2d3436",
+                "activebackground": "#d63031",
+                "activeforeground": "#000000"
+            }
+        },
+        {
+            "name": "Default Theme For MacOS",
+            "master_bg": "",
+            "frame_bg": "",
+            "INPUT": {
+                "bg": "",
+                "fg": "",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "",
+                "fg": "",
+                "activebackground": "",
+                "activeforeground": ""
+            },
+            "BTN_NUMERICO": {
+                "bg": "",
+                "fg": "",
+                "activebackground": "",
+                "activeforeground": ""
+            },
+            "BTN_OPERADOR": {
+                "bg": "",
+                "fg": "",
+                "activebackground": "",
+                "activeforeground": ""
+            },
+            "BTN_CLEAR": {
+                "bg": "",
+                "fg": "",
+                "activebackground": "",
+                "activeforeground": ""
+            }
+        },
+        {
+            "name": "Dracula",
+            "master_bg": "#282a36",
+            "frame_bg": "#282a36",
+            "INPUT": {
+                "bg": "#282a36",
+                "fg": "#f8f8f2",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#44475a",
+                "fg": "#f8f8f2",
+                "activebackground": "#282a36",
+                "activeforeground": "#50fa7b"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#44475a",
+                "fg": "#f8f8f2",
+                "activebackground": "#282a36",
+                "activeforeground": "#50fa7b"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#44475a",
+                "fg": "#f8f8f2",
+                "activebackground": "#6272a4",
+                "activeforeground": "#282a36"
+            },
+            "BTN_CLEAR": {
+                "bg": "#44475a",
+                "fg": "#f8f8f2",
+                "activebackground": "#ff5555",
+                "activeforeground": "#000000"
+            }
+        },
+        {
+            "name": "Dark Blue",
+            "master_bg": "#252729",
+            "frame_bg": "#252729",
+            "INPUT": {
+                "bg": "#252729",
+                "fg": "#ffffff",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#0e151f",
+                "fg": "#f5f6fa",
+                "activebackground": "#635f5f",
+                "activeforeground": "#000000"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#0e151f",
+                "fg": "#f5f6fa",
+                "activebackground": "#0097e6",
+                "activeforeground": "#162130"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#0e151f",
+                "fg": "#f5f6fa",
+                "activebackground": "#635f5f",
+                "activeforeground": "#000000"
+            },
+            "BTN_CLEAR": {
+                "bg": "#0e151f",
+                "fg": "#f5f6fa",
+                "activebackground": "#d63031",
+                "activeforeground": "#000000"
+            }
+        },
+        {
+            "name": "Purple",
+            "master_bg": "#0F0533",
+            "frame_bg": "#0F0533",
+            "INPUT": {
+                "bg": "#1F0543",
+                "fg": "#ffffff",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#304373",
+                "fg": "#f5f6fa",
+                "activebackground": "#1F0543",
+                "activeforeground": "#EEEEEE"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#304373",
+                "fg": "#f5f6fa",
+                "activebackground": "#1F0543",
+                "activeforeground": "#EEEEEE"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#304373",
+                "fg": "#f5f6fa",
+                "activebackground": "#1F0543",
+                "activeforeground": "#EEEEEE"
+            },
+            "BTN_CLEAR": {
+                "bg": "#304373",
+                "fg": "#f5f6fa",
+                "activebackground": "#0F0533",
+                "activeforeground": "#EEEEEE"
+            }
+        },
+        {
+            "name": "Ocean",
+            "master_bg": "#75ABBC",
+            "frame_bg": "#75ABBC",
+            "INPUT": {
+                "bg": "#75ABBC",
+                "fg": "#ffffff",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#3a506b",
+                "fg": "#f5f6fa",
+                "activebackground": "#59789E",
+                "activeforeground": "#F8F0FB"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#33465E",
+                "fg": "#f5f6fa",
+                "activebackground": "#59789E",
+                "activeforeground": "#F8F0FB"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#405876",
+                "fg": "#f5f6fa",
+                "activebackground": "#59789E",
+                "activeforeground": "#F8F0FB"
+            },
+            "BTN_CLEAR": {
+                "bg": "#3a506b",
+                "fg": "#f5f6fa",
+                "activebackground": "#59789E",
+                "activeforeground": "#F8F0FB"
+            }
+        },
+        {
+            "name": "Northern Lights",
+            "master_bg": "#012A36",
+            "frame_bg": "#012A36",
+            "INPUT": {
+                "bg": "#012A36",
+                "fg": "#FFFFFF",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#0E628F",
+                "fg": "#FFFFFF",
+                "activebackground": "#02C3FF",
+                "activeforeground": "#000000"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#05698D",
+                "fg": "#FFFFFF",
+                "activebackground": "#02C3FF",
+                "activeforeground": "#000000"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#0E628F",
+                "fg": "#FFFFFF",
+                "activebackground": "#02C3FF",
+                "activeforeground": "#000000"
+            },
+            "BTN_CLEAR": {
+                "bg": "#0E628F",
+                "fg": "#FFFFFF",
+                "activebackground": "#FF4136",
+                "activeforeground": "#000000"
+            }
+        },
+        {
+            "name": "Contrast (dark)",
+            "master_bg": "#000000",
+            "frame_bg": "#000000",
+            "INPUT": {
+                "bg": "#000000",
+                "fg": "#00ff00",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#4ec9b0",
+                "fg": "#f9fc12",
+                "activebackground": "#f38518",
+                "activeforeground": "#000000"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#8c75c0",
+                "fg": "#f9fc12",
+                "activebackground": "#00ff00",
+                "activeforeground": "#000000"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#4ec9b0",
+                "fg": "#f9fc12",
+                "activebackground": "#0097e6",
+                "activeforeground": "#000000"
+            },
+            "BTN_CLEAR": {
+                "bg": "#4ec9b0",
+                "fg": "#f9fc12",
+                "activebackground": "#d63031",
+                "activeforeground": "#000000"
+            }
         }
-        
     ]
 }
