@@ -1,5 +1,5 @@
 {
-    "current_theme": "Dark",
+    "current_theme": "Dracula",
     "global": {
         "borderwidth": 0,
         "highlightthickness": 0,
@@ -309,6 +309,44 @@
                 "bg": "#0E628F",
                 "fg": "#FFFFFF",
                 "activebackground": "#FF4136",
+                "activeforeground": "#000000"
+            }
+        },
+        {
+            "name": "Contrast (dark)",
+            "master_bg": "#000000",
+            "frame_bg": "#000000",
+            "INPUT": {
+                "bg": "#000000",
+                "fg": "#00ff00",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#4ec9b0",
+                "fg": "#f9fc12",
+                "activebackground": "#f38518",
+                "activeforeground": "#000000"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#8c75c0",
+                "fg": "#f9fc12",
+                "activebackground": "#00ff00",
+                "activeforeground": "#000000"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#4ec9b0",
+                "fg": "#f9fc12",
+                "activebackground": "#0097e6",
+                "activeforeground": "#000000"
+            },
+            "BTN_CLEAR": {
+                "bg": "#4ec9b0",
+                "fg": "#f9fc12",
+                "activebackground": "#d63031",
                 "activeforeground": "#000000"
             }
         }
