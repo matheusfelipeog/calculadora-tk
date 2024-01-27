@@ -44,6 +44,8 @@ class Calculadora(object):
 
         self.settings = self._load_settings()
         
+        self.history = []  # Add this line to initialize the history
+
         # Define estilo padrão para macOS, caso seja o sistema operacional utilizado
         if platform.system() == 'Darwin':
             self.theme = self._get_theme('Default Theme For MacOS')
@@ -315,7 +317,8 @@ class Calculadora(object):
             return
 
         result = self.calc.calculation(self._entrada.get())
-        self._set_result_in_input(result=result)
+        self.history.append({"operation": self._entrada.get(), "result": result})  # Add this line to store the calculation in the history
+
 
     def _set_result_in_input(self, result=0):
         """Seta o resultado de toda a operação dentro do input"""
@@ -331,6 +334,14 @@ class Calculadora(object):
             return False
         return True
             
+    def show_history(self):
+    # This method could be connected to a "Show History" button
+        history_window = tk.Toplevel(self.master)
+        history_window.title("Calculation History")
+        for i, entry in enumerate(reversed(self.history[-10:])):  # Change this line to show only the last 10 calculations
+            tk.Label(history_window, text=f"{i+1}. {entry['operation']} = {entry['result']}").pack()
+
+
     def start(self):
         print('\33[92mCalculadora Tk Iniciada. . .\33[m\n')
         self.master.mainloop()
