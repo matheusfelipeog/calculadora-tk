@@ -44,6 +44,8 @@ class Calculadora(object):
 
         self.settings = self._load_settings()
         
+        self.history = []  # Add this line to initialize the history
+
         # Define estilo padrão para macOS, caso seja o sistema operacional utilizado
         if platform.system() == 'Darwin':
             self.theme = self._get_theme('Default Theme For MacOS')
@@ -313,7 +315,10 @@ class Calculadora(object):
         para realizar o calculo"""
         if self._entrada.get() == 'Erro':
             return
-
+        
+        result = self.calc.calculation(self._entrada.get())
+        self.history.append({"operation": self._entrada.get(), "result": result})  # Add this line to store the calculation in the history
+        
         result = self.calc.calculation(self._entrada.get())
         self._set_result_in_input(result=result)
 
@@ -324,6 +329,13 @@ class Calculadora(object):
 
         self._entrada.delete(0, len(self._entrada.get()))
         self._entrada.insert(0, result)
+        
+    def show_history(self):
+        # This method could be connected to a "Show History" button
+        history_window = tk.Toplevel(self.master)
+        history_window.title("Calculation History")
+        for i, entry in enumerate(reversed(self.history[-10:])):  # Change this line to show only the last 10 calculations
+            tk.Label(history_window, text=f"{i+1}. {entry['operation']} = {entry['result']}").pack()
 
     def _lenght_max(self, data_in_input):
         """Para verificar se o input atingiu a quantidade de caracteres máxima"""
