@@ -315,12 +315,10 @@ class Calculadora(object):
         para realizar o calculo"""
         if self._entrada.get() == 'Erro':
             return
-        
+
         result = self.calc.calculation(self._entrada.get())
         self.history.append({"operation": self._entrada.get(), "result": result})  # Add this line to store the calculation in the history
-        
-        result = self.calc.calculation(self._entrada.get())
-        self._set_result_in_input(result=result)
+
 
     def _set_result_in_input(self, result=0):
         """Seta o resultado de toda a operação dentro do input"""
@@ -329,13 +327,6 @@ class Calculadora(object):
 
         self._entrada.delete(0, len(self._entrada.get()))
         self._entrada.insert(0, result)
-        
-    def show_history(self):
-        # This method could be connected to a "Show History" button
-        history_window = tk.Toplevel(self.master)
-        history_window.title("Calculation History")
-        for i, entry in enumerate(reversed(self.history[-10:])):  # Change this line to show only the last 10 calculations
-            tk.Label(history_window, text=f"{i+1}. {entry['operation']} = {entry['result']}").pack()
 
     def _lenght_max(self, data_in_input):
         """Para verificar se o input atingiu a quantidade de caracteres máxima"""
@@ -343,6 +334,14 @@ class Calculadora(object):
             return False
         return True
             
+    def show_history(self):
+    # This method could be connected to a "Show History" button
+        history_window = tk.Toplevel(self.master)
+        history_window.title("Calculation History")
+        for i, entry in enumerate(reversed(self.history[-10:])):  # Change this line to show only the last 10 calculations
+            tk.Label(history_window, text=f"{i+1}. {entry['operation']} = {entry['result']}").pack()
+
+
     def start(self):
         print('\33[92mCalculadora Tk Iniciada. . .\33[m\n')
         self.master.mainloop()
