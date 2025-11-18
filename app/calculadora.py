@@ -24,6 +24,15 @@ from .calculador import Calculador
 class Calculadora(object):
     """Classe para criação do layout da calculadora, distribuição dos botões
     e a adição de suas funcionalidades.
+    Os botões distríbuidos no layout estão conforme o exemplo abaixo:
+        C | ( | ) | <
+        7 | 8 | 9 | x
+        4 | 5 | 6 | -
+        1 | 2 | 3 | +
+        . | 0 | = | /
+          |   | ^ | √
+        OBS: É necessário importar o modulo style contido na pacote view,
+             e selecionar uma de suas classes de estilo.
     """
 
     def __init__(self, master):
