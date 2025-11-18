@@ -2,6 +2,7 @@
 
 # @autor: Matheus Felipe
 # @github: github.com/matheusfelipeog
+import math # Import math to enable log() function support
 
 class Calculador(object):
     """Classe responsável por realizar todos os calculos da calculadora"""
@@ -17,7 +18,7 @@ class Calculador(object):
         """Responsável por verificar se o calculo informado é possível ser feito"""
 
         try:
-            result = eval(calc)
+            result = eval(calc, {"log": math.log})
 
             return self.__format_result(result=result)
         except (NameError, ZeroDivisionError, SyntaxError, ValueError):
