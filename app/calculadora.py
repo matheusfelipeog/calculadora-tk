@@ -24,16 +24,13 @@ from .calculador import Calculador
 class Calculadora(object):
     """Classe para criação do layout da calculadora, distribuição dos botões
     e a adição de suas funcionalidades.
-
     Os botões distríbuidos no layout estão conforme o exemplo abaixo:
-
         C | ( | ) | <
         7 | 8 | 9 | x
         4 | 5 | 6 | -
         1 | 2 | 3 | +
         . | 0 | = | /
           |   | ^ | √
-
         OBS: É necessário importar o modulo style contido na pacote view,
              e selecionar uma de suas classes de estilo.
     """
@@ -171,8 +168,9 @@ class Calculadora(object):
         self._BTN_DOT = tk.Button(master, text='.', cnf=self.theme['BTN_DEFAULT'])
 
         # Instânciação dos botões vazios, para futura implementação
-        self._BTN_VAZIO1 = tk.Button(master, text='', cnf=self.theme['BTN_OPERADOR'])
-        self._BTN_VAZIO2 = tk.Button(master, text='', cnf=self.theme['BTN_OPERADOR'])
+        # --- ORIGINAL, PERO AQUÍ LOS REMPLAZAMOS ---
+        self._BTN_VAZIO1 = tk.Button(master, text='%', cnf=self.theme['BTN_OPERADOR'])   # <<< AQUÍ
+        self._BTN_VAZIO2 = tk.Button(master, text='log', cnf=self.theme['BTN_OPERADOR']) # <<< AQUÍ
 
         # Distribuição dos botões em um gerenciador de layout grid
         # Linha 0
@@ -205,9 +203,9 @@ class Calculadora(object):
         self._BTN_RESULT.grid(row=4, column=2, padx=1, pady=1)
         self._BTN_DIV.grid(row=4, column=3, padx=1, pady=1)
 
-        # Linha 5
-        self._BTN_VAZIO1.grid(row=5, column=0, padx=1, pady=1)
-        self._BTN_VAZIO2.grid(row=5, column=1, padx=1, pady=1)
+        # Linha 5 (espacios vacíos)
+        self._BTN_VAZIO1.grid(row=5, column=0, padx=1, pady=1)  # %
+        self._BTN_VAZIO2.grid(row=5, column=1, padx=1, pady=1)  # log
         self._BTN_EXP.grid(row=5, column=2, padx=1, pady=1)
         self._BTN_RAIZ.grid(row=5, column=3, padx=1, pady=1)
 
@@ -231,14 +229,18 @@ class Calculadora(object):
         self._BTN_EXP['command'] = partial(self._set_operator_in_input, '**')
         self._BTN_RAIZ['command'] = partial(self._set_operator_in_input, '**(1/2)')
 
+        # --- EVENTOS NUEVOS ---
+        self._BTN_VAZIO1['command'] = partial(self._set_operator_in_input, '%')
+        self._BTN_VAZIO2['command'] = partial(self._set_operator_in_input, 'log(')
 
-        # Eventos dos botões de funcionalidades da calculadora
+        # Eventos dos botões de funcionalidades
         self._BTN_DOT['command'] = partial(self._set_dot_in_input, '.')
         self._BTN_ABRE_PARENTESE['command'] = self._set_open_parent
         self._BTN_FECHA_PARENTESE['command'] = self._set_close_parent
         self._BTN_DEL['command'] = self._del_last_value_in_input
         self._BTN_CLEAR['command'] = self._clear_input
         self._BTN_RESULT['command'] = self._get_data_in_input
+
 
     def _set_values_in_input(self, value):
         """Metódo responsável por captar o valor númerico clicado e setar no input"""
@@ -302,15 +304,24 @@ class Calculadora(object):
             return
 
         if self._entrada.get() == '':
-            # print('\33[91mOperação inválida.\33[m')
             return
-        # Evita casos de operadores repetidos sequêncialmente, para evitar erros
+        
+        if operator == 'log(':
+            if self._entrada.get() == '0':
+                self._entrada.delete(0, len(self._entrada.get()))
+                self._entrada.insert(0, 'log(')
+            
+            else:
+                if self._entrada.get()[-1] in '+-*/(' and self._lenght_max(self._entrada.get()):
+                    self._entrada.insert(len(self._entrada.get()), 'log(')
+            return        
+
+        # Evita operadores repetidos
         if self._entrada.get()[-1] not in '+-*/' and self._lenght_max(self._entrada.get()):
-            self._entrada.insert(len(self._entrada.get()) ,operator)
+            self._entrada.insert(len(self._entrada.get()), operator)
             
     def _get_data_in_input(self):
-        """Pega os dados com todas as operações contidos dentro do input
-        para realizar o calculo"""
+        """Pega os dados com todas as operações contidos dentro do input"""
         if self._entrada.get() == 'Erro':
             return
 
@@ -318,15 +329,12 @@ class Calculadora(object):
         self._set_result_in_input(result=result)
 
     def _set_result_in_input(self, result=0):
-        """Seta o resultado de toda a operação dentro do input"""
-        if self._entrada.get() == 'Erro':
-            return
-
+        """Seta o resultado dentro do input"""
         self._entrada.delete(0, len(self._entrada.get()))
         self._entrada.insert(0, result)
 
     def _lenght_max(self, data_in_input):
-        """Para verificar se o input atingiu a quantidade de caracteres máxima"""
+        """Verifica o limite de caracteres"""
         if len(str(data_in_input)) >= 15:
             return False
         return True
@@ -337,7 +345,7 @@ class Calculadora(object):
     
     def _realod_app(self):
         """Reinicia o aplicativo."""
-        python = sys.executable  # Recupera o path do executável do python
+        python = sys.executable
         os.execl(python, python, * sys.argv)
 
     def _exit(self):
