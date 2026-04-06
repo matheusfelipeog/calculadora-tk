@@ -86,11 +86,11 @@
         },
         {
             "name": "Default Theme For MacOS",
-            "master_bg": "",
-            "frame_bg": "",
+            "master_bg": "#f5f6fa",
+            "frame_bg": "#f5f6fa",
             "INPUT": {
-                "bg": "",
-                "fg": "",
+                "bg": "#f5f6fa",
+                "fg": "#2d3436",
                 "borderwidth": 0,
                 "highlightthickness": 0,
                 "width": 15,
@@ -98,30 +98,31 @@
                 "justify": "right"
             },
             "BTN_DEFAULT": {
-                "bg": "",
-                "fg": "",
-                "activebackground": "",
-                "activeforeground": ""
+                "bg": "#d4d4d4",
+                "fg": "#2d3436",
+                "activebackground": "#635f5f",
+                "activeforeground": "#000000"
             },
             "BTN_NUMERICO": {
-                "bg": "",
-                "fg": "",
-                "activebackground": "",
-                "activeforeground": ""
+                "bg": "#adacac",
+                "fg": "#2d3436",
+                "activebackground": "#635f5f",
+                "activeforeground": "#000000"
             },
             "BTN_OPERADOR": {
-                "bg": "",
-                "fg": "",
-                "activebackground": "",
-                "activeforeground": ""
+                "bg": "#d4d4d4",
+                "fg": "#2d3436",
+                "activebackground": "#0097e6",
+                "activeforeground": "#000000"
             },
             "BTN_CLEAR": {
-                "bg": "",
-                "fg": "",
-                "activebackground": "",
-                "activeforeground": ""
+                "bg": "#d4d4d4",
+                "fg": "#2d3436",
+                "activebackground": "#d63031",
+                "activeforeground": "#000000"
             }
         },
+
         {
             "name": "Dracula",
             "master_bg": "#282a36",
