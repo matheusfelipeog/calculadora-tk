@@ -52,8 +52,8 @@ class Calculadora(object):
 
         # Edição da Top-Level
         self.master.title('Calculadora Tk')
-        self.master.maxsize(width=335, height=415)
-        self.master.minsize(width=335, height=415)
+        self.master.maxsize(width=335, height=545)
+        self.master.minsize(width=335, height=545)
         self.master.geometry('-150+100')
         self.master['bg'] = self.theme['master_bg']
 
@@ -170,9 +170,14 @@ class Calculadora(object):
         self._BTN_RESULT = tk.Button(master, text='=', cnf=self.theme['BTN_OPERADOR'])
         self._BTN_DOT = tk.Button(master, text='.', cnf=self.theme['BTN_DEFAULT'])
 
-        # Instânciação dos botões vazios, para futura implementação
-        self._BTN_VAZIO1 = tk.Button(master, text='', cnf=self.theme['BTN_OPERADOR'])
-        self._BTN_VAZIO2 = tk.Button(master, text='', cnf=self.theme['BTN_OPERADOR'])
+        # Botões de operações científicas
+        self._BTN_SIN = tk.Button(master, text='sin', cnf=self.theme['BTN_DEFAULT'])
+        self._BTN_COS = tk.Button(master, text='cos', cnf=self.theme['BTN_DEFAULT'])
+        self._BTN_LOG = tk.Button(master, text='log', cnf=self.theme['BTN_DEFAULT'])
+        self._BTN_LN = tk.Button(master, text='ln', cnf=self.theme['BTN_DEFAULT'])
+        self._BTN_FACTORIAL = tk.Button(master, text='n!', cnf=self.theme['BTN_DEFAULT'])
+        self._BTN_PI = tk.Button(master, text='π', cnf=self.theme['BTN_DEFAULT'])
+        self._BTN_E = tk.Button(master, text='e', cnf=self.theme['BTN_DEFAULT'])
 
         # Distribuição dos botões em um gerenciador de layout grid
         # Linha 0
@@ -206,10 +211,19 @@ class Calculadora(object):
         self._BTN_DIV.grid(row=4, column=3, padx=1, pady=1)
 
         # Linha 5
-        self._BTN_VAZIO1.grid(row=5, column=0, padx=1, pady=1)
-        self._BTN_VAZIO2.grid(row=5, column=1, padx=1, pady=1)
+        self._BTN_SIN.grid(row=5, column=0, padx=1, pady=1)
+        self._BTN_COS.grid(row=5, column=1, padx=1, pady=1)
         self._BTN_EXP.grid(row=5, column=2, padx=1, pady=1)
         self._BTN_RAIZ.grid(row=5, column=3, padx=1, pady=1)
+
+        # Linha 6
+        self._BTN_LOG.grid(row=6, column=0, padx=1, pady=1)
+        self._BTN_LN.grid(row=6, column=1, padx=1, pady=1)
+        self._BTN_FACTORIAL.grid(row=6, column=2, padx=1, pady=1)
+
+        # Linha 7
+        self._BTN_PI.grid(row=7, column=0, padx=1, pady=1)
+        self._BTN_E.grid(row=7, column=1, padx=1, pady=1)
 
         # Eventos dos botões númericos
         self._BTN_NUM_0['command'] = partial(self._set_values_in_input, 0)
@@ -230,6 +244,13 @@ class Calculadora(object):
         self._BTN_DIV['command'] = partial(self._set_operator_in_input, '/')
         self._BTN_EXP['command'] = partial(self._set_operator_in_input, '**')
         self._BTN_RAIZ['command'] = partial(self._set_operator_in_input, '**(1/2)')
+        self._BTN_SIN['command'] = partial(self._insert_function_in_input, 'sin')
+        self._BTN_COS['command'] = partial(self._insert_function_in_input, 'cos')
+        self._BTN_LOG['command'] = partial(self._insert_function_in_input, 'log')
+        self._BTN_LN['command'] = partial(self._insert_function_in_input, 'ln')
+        self._BTN_FACTORIAL['command'] = self._apply_factorial
+        self._BTN_PI['command'] = partial(self._insert_constant_in_input, 'pi')
+        self._BTN_E['command'] = partial(self._insert_constant_in_input, 'e')
 
 
         # Eventos dos botões de funcionalidades da calculadora
@@ -307,6 +328,42 @@ class Calculadora(object):
         # Evita casos de operadores repetidos sequêncialmente, para evitar erros
         if self._entrada.get()[-1] not in '+-*/' and self._lenght_max(self._entrada.get()):
             self._entrada.insert(len(self._entrada.get()) ,operator)
+
+    def _insert_function_in_input(self, function):
+        if self._entrada.get() == 'Erro':
+            return
+
+        current = self._entrada.get()
+        function_call = '{}('.format(function)
+        if current == '0':
+            self._entrada.delete(0, tk.END)
+            self._entrada.insert(0, function_call)
+        elif self._lenght_max(current):
+            if current[-1].isdigit() or current[-1] == ')':
+                function_call = '*' + function_call
+            self._entrada.insert(tk.END, function_call)
+
+    def _insert_constant_in_input(self, constant):
+        if self._entrada.get() == 'Erro':
+            return
+
+        current = self._entrada.get()
+        if current == '0':
+            self._entrada.delete(0, tk.END)
+        elif current and (current[-1].isdigit() or current[-1] == ')'):
+            constant = '*' + constant
+        if self._lenght_max(self._entrada.get()):
+            self._entrada.insert(tk.END, constant)
+
+    def _apply_factorial(self):
+        if self._entrada.get() == 'Erro':
+            return
+
+        current = self._entrada.get()
+        expression = 'factorial({})'.format(current)
+        if self._lenght_max(expression):
+            self._entrada.delete(0, tk.END)
+            self._entrada.insert(0, expression)
             
     def _get_data_in_input(self):
         """Pega os dados com todas as operações contidos dentro do input
@@ -327,7 +384,7 @@ class Calculadora(object):
 
     def _lenght_max(self, data_in_input):
         """Para verificar se o input atingiu a quantidade de caracteres máxima"""
-        if len(str(data_in_input)) >= 15:
+        if len(str(data_in_input)) >= 40:
             return False
         return True
             
