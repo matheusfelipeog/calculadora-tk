@@ -4,7 +4,7 @@
 # @github: github.com/matheusfelipeog
 
 # Builtins
-import sys 
+import sys
 import os
 import platform
 
@@ -19,6 +19,7 @@ from copy import deepcopy
 
 # Módulos próprios
 from .calculador import Calculador
+from .history import History
 
 
 class Calculadora(object):
@@ -32,7 +33,7 @@ class Calculadora(object):
         4 | 5 | 6 | -
         1 | 2 | 3 | +
         . | 0 | = | /
-          |   | ^ | √
+        % |   | ^ | √
 
         OBS: É necessário importar o modulo style contido na pacote view,
              e selecionar uma de suas classes de estilo.
@@ -41,9 +42,10 @@ class Calculadora(object):
     def __init__(self, master):
         self.master = master
         self.calc = Calculador()
+        self.history = History()
 
         self.settings = self._load_settings()
-        
+
         # Define estilo padrão para macOS, caso seja o sistema operacional utilizado
         if platform.system() == 'Darwin':
             self.theme = self._get_theme('Default Theme For MacOS')
@@ -65,17 +67,19 @@ class Calculadora(object):
         self._frame_buttons = tk.Frame(self.master, bg=self.theme['frame_bg'], padx=2)
         self._frame_buttons.pack()
 
-        # Funções de inicialização 
+        # Funções de inicialização
         self._create_input(self._frame_input)
         self._create_buttons(self._frame_buttons)
         self._create_menu(self.master)
+        self._bind_hotkeys()
 
     @staticmethod
     def _load_settings():
         """Utilitário para carregar o arquivo de confirgurações da calculadora."""
-        with open('./app/settings/settings.json', mode='r', encoding='utf-8') as f:
+        path = os.path.join(os.path.dirname(__file__), 'settings', 'settings.json')
+        with open(path, mode='r', encoding='utf-8') as f:
             settings = json_load(f)
-        
+
         return settings
 
     def _get_theme(self, name='Dark'):
@@ -88,12 +92,12 @@ class Calculadora(object):
             if name == t['name']:
                 found_theme = deepcopy(t)
                 break
-        
+
         return found_theme
-        
+
     def _create_input(self, master):
         self._entrada = tk.Entry(master, cnf=self.theme['INPUT'])
-        self._entrada.insert(0,0)
+        self._entrada.insert(0, 0)
         self._entrada.pack()
 
     def _create_menu(self, master):
@@ -101,33 +105,41 @@ class Calculadora(object):
         calc_menu = Menu(self.master)
         self.master.config(menu=calc_menu)
 
-        #Configuração
+        # Configuração
         config = Menu(calc_menu)
         theme = Menu(config)
-        #Menu tema
+
+        # Menu tema
         theme_incompatible = ['Default Theme For MacOS']
         for t in self.settings['themes']:
-
             name = t['name']
             if name in theme_incompatible:  # Ignora os temas não compatíveis.
                 continue
             else:
                 theme.add_command(label=name, command=partial(self._change_theme_to, name))
-        #Configuração
-        calc_menu.add_cascade(label='Configuração', menu=config)
-        config.add_cascade(label='Tema', menu=theme)
 
+        # Menu história
+        history_menu = Menu(calc_menu)
+        self._history_menu = history_menu
+        self._refresh_history_menu()
+
+        # Configuração
+        calc_menu.add_cascade(label='Configuração', menu=config)
+        calc_menu.add_cascade(label='История', menu=history_menu)
+
+        config.add_cascade(label='Tema', menu=theme)
         config.add_separator()
         config.add_command(label='Sair', command=self._exit)
 
     def _change_theme_to(self, name='Dark'):
         self.settings['current_theme'] = name
 
-        with open('./app/settings/settings.json', 'w') as outfile:
+        path = os.path.join(os.path.dirname(__file__), 'settings', 'settings.json')
+        with open(path, 'w', encoding='utf-8') as outfile:
             json_dump(self.settings, outfile, indent=4)
 
         self._realod_app()
-        
+
     def _create_buttons(self, master):
         """"Metódo responsável pela criação de todos os botões da calculadora,
         indo desde adição de eventos em cada botão à distribuição no layout grid.
@@ -170,8 +182,10 @@ class Calculadora(object):
         self._BTN_RESULT = tk.Button(master, text='=', cnf=self.theme['BTN_OPERADOR'])
         self._BTN_DOT = tk.Button(master, text='.', cnf=self.theme['BTN_DEFAULT'])
 
+        # Кнопка % вместо первого пустого слота
+        self._BTN_PERCENT = tk.Button(master, text='%', cnf=self.theme['BTN_DEFAULT'])
+
         # Instânciação dos botões vazios, para futura implementação
-        self._BTN_VAZIO1 = tk.Button(master, text='', cnf=self.theme['BTN_OPERADOR'])
         self._BTN_VAZIO2 = tk.Button(master, text='', cnf=self.theme['BTN_OPERADOR'])
 
         # Distribuição dos botões em um gerenciador de layout grid
@@ -206,7 +220,7 @@ class Calculadora(object):
         self._BTN_DIV.grid(row=4, column=3, padx=1, pady=1)
 
         # Linha 5
-        self._BTN_VAZIO1.grid(row=5, column=0, padx=1, pady=1)
+        self._BTN_PERCENT.grid(row=5, column=0, padx=1, pady=1)
         self._BTN_VAZIO2.grid(row=5, column=1, padx=1, pady=1)
         self._BTN_EXP.grid(row=5, column=2, padx=1, pady=1)
         self._BTN_RAIZ.grid(row=5, column=3, padx=1, pady=1)
@@ -231,7 +245,6 @@ class Calculadora(object):
         self._BTN_EXP['command'] = partial(self._set_operator_in_input, '**')
         self._BTN_RAIZ['command'] = partial(self._set_operator_in_input, '**(1/2)')
 
-
         # Eventos dos botões de funcionalidades da calculadora
         self._BTN_DOT['command'] = partial(self._set_dot_in_input, '.')
         self._BTN_ABRE_PARENTESE['command'] = self._set_open_parent
@@ -239,6 +252,7 @@ class Calculadora(object):
         self._BTN_DEL['command'] = self._del_last_value_in_input
         self._BTN_CLEAR['command'] = self._clear_input
         self._BTN_RESULT['command'] = self._get_data_in_input
+        self._BTN_PERCENT['command'] = self._set_percent_in_input
 
     def _set_values_in_input(self, value):
         """Metódo responsável por captar o valor númerico clicado e setar no input"""
@@ -247,29 +261,29 @@ class Calculadora(object):
 
         if self._entrada.get() == '0':
             self._entrada.delete(0)
-            self._entrada.insert(0 ,value)
+            self._entrada.insert(0, value)
         elif self._lenght_max(self._entrada.get()):
-            self._entrada.insert(len(self._entrada.get()) ,value)
-    
+            self._entrada.insert(len(self._entrada.get()), value)
+
     def _set_dot_in_input(self, dot):
         """Metódo responsável por setar o ponto de separação decimal no valor"""
         if self._entrada.get() == 'Erro':
-            return 
+            return
 
         if self._entrada.get()[-1] not in '.+-/*' and self._lenght_max(self._entrada.get()):
-            self._entrada.insert(len(self._entrada.get()) ,dot)
+            self._entrada.insert(len(self._entrada.get()), dot)
 
     def _set_open_parent(self):
         """Metódo para setar a abertura de parenteses no input"""
         if self._entrada.get() == 'Erro':
-            return 
+            return
 
         if self._entrada.get() == '0':
             self._entrada.delete(0)
             self._entrada.insert(len(self._entrada.get()), '(')
         elif self._entrada.get()[-1] in '+-/*' and self._lenght_max(self._entrada.get()):
             self._entrada.insert(len(self._entrada.get()), '(')
-    
+
     def _set_close_parent(self):
         """Metódo para setar o fechamento de parenteses no input"""
         if self._entrada.get() == 'Erro':
@@ -283,8 +297,8 @@ class Calculadora(object):
     def _clear_input(self):
         """Reseta o input da calculadora, limpando-o por completo e inserindo o valor 0"""
         self._entrada.delete(0, len(self._entrada.get()))
-        self._entrada.insert(0,0)
-    
+        self._entrada.insert(0, 0)
+
     def _del_last_value_in_input(self):
         """Apaga o último digito contido dentro do input"""
         if self._entrada.get() == 'Erro':
@@ -292,30 +306,34 @@ class Calculadora(object):
 
         if len(self._entrada.get()) == 1:
             self._entrada.delete(0)
-            self._entrada.insert(0,0)
+            self._entrada.insert(0, 0)
         else:
             self._entrada.delete(len(self._entrada.get()) - 1)
-    
+
     def _set_operator_in_input(self, operator):
         """Metódo responsável por captar o operador matemático clicado e setar no input"""
         if self._entrada.get() == 'Erro':
             return
 
         if self._entrada.get() == '':
-            # print('\33[91mOperação inválida.\33[m')
             return
         # Evita casos de operadores repetidos sequêncialmente, para evitar erros
         if self._entrada.get()[-1] not in '+-*/' and self._lenght_max(self._entrada.get()):
-            self._entrada.insert(len(self._entrada.get()) ,operator)
-            
+            self._entrada.insert(len(self._entrada.get()), operator)
+
     def _get_data_in_input(self):
         """Pega os dados com todas as operações contidos dentro do input
-        para realizar o calculo"""
+        para realizar o calculo e salva na história"""
         if self._entrada.get() == 'Erro':
             return
 
-        result = self.calc.calculation(self._entrada.get())
+        expression = self._entrada.get()
+        result = self.calc.calculation(expression)
         self._set_result_in_input(result=result)
+
+        if result != 'Erro':
+            self.history.add(expression, result)
+            self._refresh_history_menu()
 
     def _set_result_in_input(self, result=0):
         """Seta o resultado de toda a operação dentro do input"""
@@ -325,20 +343,75 @@ class Calculadora(object):
         self._entrada.delete(0, len(self._entrada.get()))
         self._entrada.insert(0, result)
 
+    def _set_percent_in_input(self):
+        """Добавляет символ % в конец выражения."""
+        if self._entrada.get() == 'Erro':
+            return
+        last = self._entrada.get()[-1] if self._entrada.get() else ''
+        if last.isdigit() and self._lenght_max(self._entrada.get()):
+            self._entrada.insert(len(self._entrada.get()), '%')
+
+    def _refresh_history_menu(self):
+        """Перестраивает меню истории."""
+        menu = self._history_menu
+        menu.delete(0, 'end')
+
+        items = self.history.all()
+        if not items:
+            menu.add_command(label='(пусто)', state='disabled')
+        else:
+            for entry in reversed(items):
+                label = '{expr} = {res}'.format(
+                    expr=entry['expression'][:30],
+                    res=entry['result']
+                )
+                menu.add_command(
+                    label=label,
+                    command=partial(self._set_result_in_input, entry['result'])
+                )
+
+        menu.add_separator()
+        menu.add_command(label='Очистить историю', command=self._clear_history)
+
+    def _clear_history(self):
+        """Очищает историю вычислений."""
+        self.history.clear()
+        self._refresh_history_menu()
+
+    def _bind_hotkeys(self):
+        """Привязывает горячие клавиши."""
+        # Цифры 0-9
+        for digit in '0123456789':
+            self.master.bind(digit, lambda e, d=digit: self._set_values_in_input(int(d)))
+
+        # Операторы
+        for key, op in {'+': '+', '-': '-', '*': '*', '/': '/'}.items():
+            self.master.bind(key, lambda e, o=op: self._set_operator_in_input(o))
+
+        # Специальные клавиши
+        self.master.bind('<Return>',     lambda e: self._get_data_in_input())
+        self.master.bind('<KP_Enter>',   lambda e: self._get_data_in_input())
+        self.master.bind('<BackSpace>',  lambda e: self._del_last_value_in_input())
+        self.master.bind('<Escape>',     lambda e: self._clear_input())
+        self.master.bind('<parenleft>',  lambda e: self._set_open_parent())
+        self.master.bind('<parenright>', lambda e: self._set_close_parent())
+        self.master.bind('<period>',     lambda e: self._set_dot_in_input('.'))
+        self.master.bind('<percent>',    lambda e: self._set_percent_in_input())
+
     def _lenght_max(self, data_in_input):
         """Para verificar se o input atingiu a quantidade de caracteres máxima"""
         if len(str(data_in_input)) >= 15:
             return False
         return True
-            
+
     def start(self):
         print('\33[92mCalculadora Tk Iniciada. . .\33[m\n')
         self.master.mainloop()
-    
+
     def _realod_app(self):
         """Reinicia o aplicativo."""
         python = sys.executable  # Recupera o path do executável do python
-        os.execl(python, python, * sys.argv)
+        os.execl(python, python, *sys.argv)
 
     def _exit(self):
         exit()
