@@ -1,0 +1,23 @@
+{
+  "ES":
+  {
+    "language": "Língua",
+    "configuration": "Configuração",
+    "theme": "Tema",
+    "exit": "Sair"
+  },
+  "EN":
+  {
+    "language": "Language",
+    "configuration": "Сonfiguration",
+    "theme": "Theme",
+    "exit": "Exit"
+  },
+  "RU":
+  {
+    "language": "Язык",
+    "configuration": "Настройки",
+    "theme": "Тема",
+    "exit": "Выход"
+  }
+}

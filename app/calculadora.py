@@ -97,6 +97,10 @@ class Calculadora(object):
         self._entrada.pack()
 
     def _create_menu(self, master):
+        # Load locatizations
+        with open(f'./app/localization.json', mode='r', encoding='utf-8') as f:
+            words = json_load(f)
+
         self.master.option_add('*tearOff', FALSE)
         calc_menu = Menu(self.master)
         self.master.config(menu=calc_menu)
@@ -113,12 +117,26 @@ class Calculadora(object):
                 continue
             else:
                 theme.add_command(label=name, command=partial(self._change_theme_to, name))
+
+        langs = Menu(config)
+        for k in words.keys():
+            langs.add_command(label=k, command=partial(self._change_language_to, k))
+
         #Configuração
-        calc_menu.add_cascade(label='Configuração', menu=config)
-        config.add_cascade(label='Tema', menu=theme)
+        calc_menu.add_cascade(label=words[self.settings["current_language"]]['configuration'], menu=config)
+        config.add_cascade(label=words[self.settings["current_language"]]['theme'], menu=theme)
+        config.add_cascade(label=words[self.settings["current_language"]]['language'], menu=langs)
 
         config.add_separator()
-        config.add_command(label='Sair', command=self._exit)
+        config.add_command(label=words[self.settings["current_language"]]['exit'], command=self._exit)
+
+    def _change_language_to(self, name='en'):
+        self.settings['current_language'] = name
+
+        with open('./app/settings/settings.json', 'w') as outfile:
+            json_dump(self.settings, outfile, indent=4)
+
+        self._realod_app()
 
     def _change_theme_to(self, name='Dark'):
         self.settings['current_theme'] = name
