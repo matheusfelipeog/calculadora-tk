@@ -44,32 +44,81 @@ class Calculadora(object):
 
         self.settings = self._load_settings()
         
-        # Define estilo padrão para macOS, caso seja o sistema operacional utilizado
         if platform.system() == 'Darwin':
             self.theme = self._get_theme('Default Theme For MacOS')
         else:
             self.theme = self._get_theme(self.settings['current_theme'])
 
-        # Edição da Top-Level
+        if self.theme is None:
+            print(f"Предупреждение: Тема '{self.settings['current_theme']}' не найдена в JSON. Загружаем 'Dark'.")
+            self.theme = self._get_theme('Dark')
+            if self.theme is None and self.settings['themes']:
+                self.theme = self.settings['themes'][0]
+
         self.master.title('Calculadora Tk')
         self.master.maxsize(width=335, height=415)
         self.master.minsize(width=335, height=415)
         self.master.geometry('-150+100')
-        self.master['bg'] = self.theme['master_bg']
 
-        # Área do input
-        self._frame_input = tk.Frame(self.master, bg=self.theme['frame_bg'], pady=4)
+        master_bg_color = '#252729'
+        frame_bg_color = '#252729'
+
+        if self.theme and isinstance(self.theme, dict):
+            if self.theme.get('master_bg'): master_bg_color = self.theme['master_bg']
+            if self.theme.get('frame_bg'): frame_bg_color = self.theme['frame_bg']
+
+        self.master['bg'] = master_bg_color
+        is_image_theme = False
+
+        if self.theme and isinstance(self.theme, dict) and 'bg_image' in self.theme and self.theme['bg_image']:
+            try:
+                base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+                raw_path = os.path.join(base_dir, self.theme['bg_image'])
+                img_path = os.path.normpath(raw_path)
+                
+                if os.path.exists(img_path):
+                    self._bg_img = tk.PhotoImage(file=img_path)
+                    self._bg_label = tk.Label(self.master, image=self._bg_img)
+                    self._bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+                    is_image_theme = True
+                else:
+                    print(f"Предупреждение: Файла нет по пути: {img_path}")
+            except Exception as e:
+                print(f"Не удалось отобразить PhotoImage: {e}")
+
+        if self.theme and 'INPUT' in self.theme:
+            if not self.theme['INPUT'].get('bg') or is_image_theme:
+                self.theme['INPUT']['bg'] = '#1c1d22' 
+
+        if is_image_theme:
+            self._frame_input = tk.Frame(self._bg_label, bg='', bd=0, highlightthickness=0)
+            self._frame_buttons = tk.Frame(self._bg_label, bg='', bd=0, highlightthickness=0)
+        else:
+            self._frame_input = tk.Frame(self.master, bg=frame_bg_color, pady=4)
+            self._frame_buttons = tk.Frame(self.master, bg=frame_bg_color, padx=2)
+            
         self._frame_input.pack()
-
-        # Área dos botões
-        self._frame_buttons = tk.Frame(self.master, bg=self.theme['frame_bg'], padx=2)
         self._frame_buttons.pack()
 
-        # Funções de inicialização 
         self._create_input(self._frame_input)
         self._create_buttons(self._frame_buttons)
         self._create_menu(self.master)
 
+        if is_image_theme:
+            self._frame_input.configure(bg='', bd=0, highlightthickness=0)
+            self._frame_buttons.configure(bg='', bd=0, highlightthickness=0)
+            
+            for widget in self._frame_buttons.winfo_children():
+                if isinstance(widget, tk.Button):
+                    widget.configure(
+                        relief='flat',
+                        borderwidth=0,
+                        highlightthickness=0,
+                        bg='#1e1f26', 
+                        fg='#ffffff',
+                        activebackground='#59789E',
+                        activeforeground='#FFFFFF'
+                    )
     @staticmethod
     def _load_settings():
         """Utilitário para carregar o arquivo de confirgurações da calculadora."""

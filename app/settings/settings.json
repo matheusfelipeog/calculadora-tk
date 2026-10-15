@@ -1,5 +1,5 @@
 {
-    "current_theme": "Dark",
+    "current_theme": "Dora",
     "global": {
         "borderwidth": 0,
         "highlightthickness": 0,
@@ -44,6 +44,47 @@
                 "fg": "#f5f6fa",
                 "activebackground": "#d63031",
                 "activeforeground": "#000000"
+            }
+        },
+        {
+            "name": "Dora",
+            "bg_image": "images/dora.png",
+            "INPUT": {
+                "bg": "#282a36",
+                "fg": "#ffffff",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#3a506b",
+                "fg": "#ffffff",
+                "relief": "flat",
+                "activebackground": "#59789E",
+                "activeforeground": "#F8F0FB"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#33465E",
+                "fg": "#ffffff",
+                "relief": "flat",
+                "activebackground": "#59789E",
+                "activeforeground": "#F8F0FB"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#405876",
+                "fg": "#ffffff",
+                "relief": "flat",
+                "activebackground": "#59789E",
+                "activeforeground": "#F8F0FB"
+            },
+            "BTN_CLEAR": {
+                "bg": "#3a506b",
+                "fg": "#ffffff",
+                "relief": "flat",
+                "activebackground": "#e74c3c",
+                "activeforeground": "#ffffff"
             }
         },
         {
