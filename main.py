@@ -7,7 +7,7 @@
 import tkinter as tk
 
 # Módulo próprio
-from app.calculadora import Calculadora
+from app.calculadora import Calculadora 
 
 if __name__ == '__main__':
     master = tk.Tk()
