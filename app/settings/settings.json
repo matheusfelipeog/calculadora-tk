@@ -1,5 +1,5 @@
 {
-    "current_theme": "Dark",
+    "current_theme": "Purple",
     "global": {
         "borderwidth": 0,
         "highlightthickness": 0,
@@ -310,6 +310,272 @@
                 "fg": "#FFFFFF",
                 "activebackground": "#FF4136",
                 "activeforeground": "#000000"
+            }
+        },
+        {
+            "name": "Sunset",
+            "master_bg": "#2b1b2b",
+            "frame_bg": "#2b1b2b",
+            "INPUT": {
+                "bg": "#2b1b2b",
+                "fg": "#ffd6a5",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#3d2c3d",
+                "fg": "#ffd6a5",
+                "activebackground": "#ff8c42",
+                "activeforeground": "#000000"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#4a2c4a",
+                "fg": "#ffd6a5",
+                "activebackground": "#ffb347",
+                "activeforeground": "#000000"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#5c2e5c",
+                "fg": "#ffd6a5",
+                "activebackground": "#ff6b6b",
+                "activeforeground": "#000000"
+            },
+            "BTN_CLEAR": {
+                "bg": "#5c2e5c",
+                "fg": "#ffd6a5",
+                "activebackground": "#e63946",
+                "activeforeground": "#ffffff"
+            }
+        },
+        {
+            "name": "Forest",
+            "master_bg": "#1b2e1b",
+            "frame_bg": "#1b2e1b",
+            "INPUT": {
+                "bg": "#1b2e1b",
+                "fg": "#e0f2e0",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#2d4a2d",
+                "fg": "#e0f2e0",
+                "activebackground": "#4caf50",
+                "activeforeground": "#000000"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#3a5a3a",
+                "fg": "#e0f2e0",
+                "activebackground": "#66bb6a",
+                "activeforeground": "#000000"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#2d4a2d",
+                "fg": "#e0f2e0",
+                "activebackground": "#81c784",
+                "activeforeground": "#000000"
+            },
+            "BTN_CLEAR": {
+                "bg": "#2d4a2d",
+                "fg": "#e0f2e0",
+                "activebackground": "#e53935",
+                "activeforeground": "#ffffff"
+            }
+        },
+        {
+            "name": "Cyberpunk",
+            "master_bg": "#0d0221",
+            "frame_bg": "#0d0221",
+            "INPUT": {
+                "bg": "#0d0221",
+                "fg": "#f8f8f2",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#1a0b2e",
+                "fg": "#00ff9f",
+                "activebackground": "#ff00ff",
+                "activeforeground": "#000000"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#261447",
+                "fg": "#00ff9f",
+                "activebackground": "#ff00ff",
+                "activeforeground": "#000000"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#1a0b2e",
+                "fg": "#00ffff",
+                "activebackground": "#ff00ff",
+                "activeforeground": "#000000"
+            },
+            "BTN_CLEAR": {
+                "bg": "#1a0b2e",
+                "fg": "#ff0055",
+                "activebackground": "#ff00ff",
+                "activeforeground": "#000000"
+            }
+        },
+        {
+            "name": "Coffee",
+            "master_bg": "#2e1f1a",
+            "frame_bg": "#2e1f1a",
+            "INPUT": {
+                "bg": "#2e1f1a",
+                "fg": "#f5e6d3",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#4b3621",
+                "fg": "#f5e6d3",
+                "activebackground": "#8b5a2b",
+                "activeforeground": "#000000"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#5d4037",
+                "fg": "#f5e6d3",
+                "activebackground": "#a1887f",
+                "activeforeground": "#000000"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#4b3621",
+                "fg": "#f5e6d3",
+                "activebackground": "#6d4c41",
+                "activeforeground": "#000000"
+            },
+            "BTN_CLEAR": {
+                "bg": "#4b3621",
+                "fg": "#f5e6d3",
+                "activebackground": "#c62828",
+                "activeforeground": "#ffffff"
+            }
+        },
+        {
+            "name": "Rose",
+            "master_bg": "#2b1a1f",
+            "frame_bg": "#2b1a1f",
+            "INPUT": {
+                "bg": "#2b1a1f",
+                "fg": "#ffe4e1",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#4a2c33",
+                "fg": "#ffe4e1",
+                "activebackground": "#ff69b4",
+                "activeforeground": "#000000"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#5c3840",
+                "fg": "#ffe4e1",
+                "activebackground": "#ff85c2",
+                "activeforeground": "#000000"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#4a2c33",
+                "fg": "#ffe4e1",
+                "activebackground": "#ff1493",
+                "activeforeground": "#ffffff"
+            },
+            "BTN_CLEAR": {
+                "bg": "#4a2c33",
+                "fg": "#ffe4e1",
+                "activebackground": "#c2185b",
+                "activeforeground": "#ffffff"
+            }
+        },
+        {
+            "name": "Matrix",
+            "master_bg": "#000000",
+            "frame_bg": "#000000",
+            "INPUT": {
+                "bg": "#000000",
+                "fg": "#00ff00",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#0d0d0d",
+                "fg": "#00ff00",
+                "activebackground": "#003300",
+                "activeforeground": "#00ff00"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#111111",
+                "fg": "#00ff00",
+                "activebackground": "#005500",
+                "activeforeground": "#00ff00"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#0d0d0d",
+                "fg": "#00ff00",
+                "activebackground": "#008800",
+                "activeforeground": "#000000"
+            },
+            "BTN_CLEAR": {
+                "bg": "#0d0d0d",
+                "fg": "#00ff00",
+                "activebackground": "#ff0000",
+                "activeforeground": "#000000"
+            }
+        },
+        {
+            "name": "Mono",
+            "master_bg": "#1e1e1e",
+            "frame_bg": "#1e1e1e",
+            "INPUT": {
+                "bg": "#1e1e1e",
+                "fg": "#d4d4d4",
+                "borderwidth": 0,
+                "highlightthickness": 0,
+                "width": 15,
+                "font": "Arial 28 bold",
+                "justify": "right"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#2d2d2d",
+                "fg": "#d4d4d4",
+                "activebackground": "#3e3e3e",
+                "activeforeground": "#ffffff"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#3a3a3a",
+                "fg": "#d4d4d4",
+                "activebackground": "#4e4e4e",
+                "activeforeground": "#ffffff"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#2d2d2d",
+                "fg": "#d4d4d4",
+                "activebackground": "#007acc",
+                "activeforeground": "#ffffff"
+            },
+            "BTN_CLEAR": {
+                "bg": "#2d2d2d",
+                "fg": "#d4d4d4",
+                "activebackground": "#f44747",
+                "activeforeground": "#ffffff"
             }
         }
     ]
