@@ -1,5 +1,5 @@
 {
-    "current_theme": "Dark",
+    "current_theme": "Neon Purple",
     "global": {
         "borderwidth": 0,
         "highlightthickness": 0,
@@ -310,6 +310,96 @@
                 "fg": "#FFFFFF",
                 "activebackground": "#FF4136",
                 "activeforeground": "#000000"
+            }
+        },
+        {
+            "name": "Dark",
+            "master_bg": "#212121",
+            "frame_bg": "#212121",
+            "INPUT": {
+                "width": 19,
+                "font": [
+                    "Helvetica",
+                    "20",
+                    "bold"
+                ],
+                "bd": 0,
+                "bg": "#212121",
+                "fg": "#ffffff",
+                "justify": "right"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#333333",
+                "fg": "#ffffff",
+                "bd": 0,
+                "activebackground": "#424242",
+                "activeforeground": "#ffffff"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#fe9402",
+                "fg": "#ffffff",
+                "bd": 0,
+                "activebackground": "#fca935",
+                "activeforeground": "#ffffff"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#a5a5a5",
+                "fg": "#000000",
+                "bd": 0,
+                "activebackground": "#e0e0e0",
+                "activeforeground": "#000000"
+            },
+            "BTN_CLEAR": {
+                "bg": "#a5a5a5",
+                "fg": "#000000",
+                "bd": 0,
+                "activebackground": "#e0e0e0",
+                "activeforeground": "#000000"
+            }
+        },
+        {
+            "name": "Neon Purple",
+            "master_bg": "#0d0b18",
+            "frame_bg": "#0d0b18",
+            "INPUT": {
+                "width": 19,
+                "font": [
+                    "Helvetica",
+                    "20",
+                    "bold"
+                ],
+                "bd": 0,
+                "bg": "#141125",
+                "fg": "#00ffff",
+                "justify": "right"
+            },
+            "BTN_NUMERICO": {
+                "bg": "#1a1636",
+                "fg": "#ffffff",
+                "bd": 0,
+                "activebackground": "#2a2454",
+                "activeforeground": "#ffffff"
+            },
+            "BTN_OPERADOR": {
+                "bg": "#8a2be2",
+                "fg": "#00ffff",
+                "bd": 0,
+                "activebackground": "#a046f5",
+                "activeforeground": "#00ffff"
+            },
+            "BTN_DEFAULT": {
+                "bg": "#3d105c",
+                "fg": "#ff00ff",
+                "bd": 0,
+                "activebackground": "#591c85",
+                "activeforeground": "#ff00ff"
+            },
+            "BTN_CLEAR": {
+                "bg": "#ff0055",
+                "fg": "#ffffff",
+                "bd": 0,
+                "activebackground": "#ff3377",
+                "activeforeground": "#ffffff"
             }
         }
     ]

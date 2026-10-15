@@ -171,7 +171,8 @@ class Calculadora(object):
         self._BTN_DOT = tk.Button(master, text='.', cnf=self.theme['BTN_DEFAULT'])
 
         # Instânciação dos botões vazios, para futura implementação
-        self._BTN_VAZIO1 = tk.Button(master, text='', cnf=self.theme['BTN_OPERADOR'])
+    #---
+        self._BTN_VAZIO1 = tk.Button(master, text='%', cnf=self.theme['BTN_OPERADOR'])
         self._BTN_VAZIO2 = tk.Button(master, text='', cnf=self.theme['BTN_OPERADOR'])
 
         # Distribuição dos botões em um gerenciador de layout grid
@@ -239,6 +240,9 @@ class Calculadora(object):
         self._BTN_DEL['command'] = self._del_last_value_in_input
         self._BTN_CLEAR['command'] = self._clear_input
         self._BTN_RESULT['command'] = self._get_data_in_input
+#---
+        self._BTN_VAZIO1['command'] = self._set_percent_in_input
+
 
     def _set_values_in_input(self, value):
         """Metódo responsável por captar o valor númerico clicado e setar no input"""
@@ -258,6 +262,51 @@ class Calculadora(object):
 
         if self._entrada.get()[-1] not in '.+-/*' and self._lenght_max(self._entrada.get()):
             self._entrada.insert(len(self._entrada.get()) ,dot)
+
+#---
+    def _set_percent_in_input(self):
+        """Метод для правильного расчёта процентов (например, 100-5% -> 95)"""
+        if self._entrada.get() == 'Erro':
+            return
+
+        current_text = self._entrada.get()
+
+        # Ищем последний математический оператор (+, -, *, /) в строке
+        operator_index = -1
+        for i in range(len(current_text) - 1, -1, -1):
+            if current_text[i] in '+-*/':
+                operator_index = i
+                break
+
+        try:
+            # Сценарий 1: Если знаков операций нет
+            if operator_index == -1:
+                res = self.calc.calculation(f"({current_text})/100")
+                self._set_result_in_input(result=res)
+                return
+
+            # Разделяем строку на части
+            base_expression = current_text[:operator_index]
+            operator = current_text[operator_index]
+            percent_value = current_text[operator_index + 1:]
+
+            if not percent_value:
+                return
+
+            base_calculated = self.calc.calculation(base_expression)
+
+            if operator in '+-':
+                actual_percent = f"({base_calculated}*{percent_value}/100)"
+                final_expression = f"{base_calculated}{operator}{actual_percent}"
+            else:
+                final_expression = f"{base_calculated}{operator}({percent_value}/100)"
+
+            res = self.calc.calculation(final_expression)
+            self._set_result_in_input(result=res)
+
+        except Exception:
+            self._set_result_in_input(result='Erro')
+
 
     def _set_open_parent(self):
         """Metódo para setar a abertura de parenteses no input"""
